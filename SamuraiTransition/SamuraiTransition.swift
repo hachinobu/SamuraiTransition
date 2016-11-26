@@ -106,7 +106,52 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             })
             
         } else {
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            
+            let zanTargetView = toView.snapshotView(afterScreenUpdates: true)!
+            let zanPoint = containerView.center
+            
+            let oneSideSnapFrame: CGRect
+            let otherSideSnapFrame: CGRect
+            
+            let oneSideFinishFrame: CGRect
+            let otherSideFnishFrame: CGRect
+            
+            if zanAngle.isHorizontal() {
+                let divided = containerFrame.divided(atDistance: zanPoint.y, from: .minYEdge)
+                oneSideSnapFrame = divided.slice
+                otherSideSnapFrame = divided.remainder
+                oneSideFinishFrame = oneSideSnapFrame.offsetBy(dx: 0.0, dy: -oneSideSnapFrame.height)
+                otherSideFnishFrame = otherSideSnapFrame.offsetBy(dx: 0.0, dy: otherSideSnapFrame.height)
+            } else {
+                let divided = containerFrame.divided(atDistance: zanPoint.x, from: .minXEdge)
+                oneSideSnapFrame = divided.slice
+                otherSideSnapFrame = divided.remainder
+                oneSideFinishFrame = oneSideSnapFrame.offsetBy(dx: -oneSideSnapFrame.width, dy: 0.0)
+                otherSideFnishFrame = otherSideSnapFrame.offsetBy(dx: otherSideSnapFrame.width, dy: 0.0)
+            }
+            
+            let oneSideView = zanTargetView.resizableSnapshotView(from: oneSideSnapFrame, afterScreenUpdates: false, withCapInsets: .zero)!
+            oneSideView.frame = oneSideFinishFrame
+            
+            let otherSideView = zanTargetView.resizableSnapshotView(from: otherSideSnapFrame, afterScreenUpdates: false, withCapInsets: .zero)!
+            otherSideView.frame = otherSideFnishFrame
+            
+            containerView.addSubview(fromView)
+            containerView.addSubview(oneSideView)
+            containerView.addSubview(otherSideView)
+            toView.alpha = 0.0
+            
+            UIView.animate(withDuration: duration, animations: {
+                self.fromView.alpha = 0.0
+                self.fromView.transform = CGAffineTransform(scaleX: 0.4, y: 0.3)
+                oneSideView.frame = oneSideSnapFrame
+                otherSideView.frame = otherSideSnapFrame
+            }, completion: { _ in
+                self.toView.alpha = 1.0
+                self.fromView.removeFromSuperview()
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            })
+            
         }
         
     }
