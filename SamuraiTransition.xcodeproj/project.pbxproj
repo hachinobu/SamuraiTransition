@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		C2F716561DE9565000480CAB /* SamuraiTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F716541DE9565000480CAB /* SamuraiTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2F716861DE959FF00480CAB /* ZanAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716851DE959FF00480CAB /* ZanAngle.swift */; };
+		C2F716881DE95ABC00480CAB /* SamuraiTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C2F716511DE9565000480CAB /* SamuraiTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SamuraiTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F716541DE9565000480CAB /* SamuraiTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SamuraiTransition.h; sourceTree = "<group>"; };
 		C2F716551DE9565000480CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2F716851DE959FF00480CAB /* ZanAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanAngle.swift; sourceTree = "<group>"; };
+		C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamuraiTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,8 @@
 			children = (
 				C2F716541DE9565000480CAB /* SamuraiTransition.h */,
 				C2F716551DE9565000480CAB /* Info.plist */,
+				C2F716851DE959FF00480CAB /* ZanAngle.swift */,
+				C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */,
 			);
 			path = SamuraiTransition;
 			sourceTree = "<group>";
@@ -95,6 +101,7 @@
 				TargetAttributes = {
 					C2F716501DE9565000480CAB = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +138,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F716861DE959FF00480CAB /* ZanAngle.swift in Sources */,
+				C2F716881DE95ABC00480CAB /* SamuraiTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +248,7 @@
 		C2F7165A1DE9565000480CAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -246,10 +256,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SamuraiTransition/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hachinobu.SamuraiTransition.SamuraiTransition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -257,6 +269,7 @@
 		C2F7165B1DE9565000480CAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -264,6 +277,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SamuraiTransition/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hachinobu.SamuraiTransition.SamuraiTransition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -291,6 +305,7 @@
 				C2F7165B1DE9565000480CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
