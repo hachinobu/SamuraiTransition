@@ -10,6 +10,7 @@
 		C2F716561DE9565000480CAB /* SamuraiTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F716541DE9565000480CAB /* SamuraiTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2F716861DE959FF00480CAB /* ZanAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716851DE959FF00480CAB /* ZanAngle.swift */; };
 		C2F716881DE95ABC00480CAB /* SamuraiTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */; };
+		C2F7168C1DEB06D000480CAB /* SamuraiTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7168B1DEB06D000480CAB /* SamuraiTransitionDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		C2F716551DE9565000480CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2F716851DE959FF00480CAB /* ZanAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanAngle.swift; sourceTree = "<group>"; };
 		C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamuraiTransition.swift; sourceTree = "<group>"; };
+		C2F7168B1DEB06D000480CAB /* SamuraiTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamuraiTransitionDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 				C2F716551DE9565000480CAB /* Info.plist */,
 				C2F716851DE959FF00480CAB /* ZanAngle.swift */,
 				C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */,
+				C2F7168B1DEB06D000480CAB /* SamuraiTransitionDelegate.swift */,
 			);
 			path = SamuraiTransition;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F7168C1DEB06D000480CAB /* SamuraiTransitionDelegate.swift in Sources */,
 				C2F716861DE959FF00480CAB /* ZanAngle.swift in Sources */,
 				C2F716881DE95ABC00480CAB /* SamuraiTransition.swift in Sources */,
 			);

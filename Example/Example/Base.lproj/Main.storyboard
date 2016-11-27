@@ -23,6 +23,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqv-bE-8qc">
                                 <rect key="frame" x="152" y="318" width="70" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Cut in two"/>
                                 <connections>
                                     <action selector="zanAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k8Y-qf-lKj"/>

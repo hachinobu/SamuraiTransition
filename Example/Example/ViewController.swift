@@ -15,7 +15,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        samuraiTransition.samuraiDelegate = self
+        samuraiTransition.zanAngle = .vertical
+        samuraiTransition.isAffineTransform = true
+        samuraiTransition.duration = 0.33
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,3 +49,14 @@ extension ViewController: UIViewControllerTransitioningDelegate {
     
 }
 
+extension ViewController: SamuraiTransitionDelegate {
+    
+    var zanPosition: CGPoint {
+        return view.center
+    }
+    
+    var zanColor: UIColor {
+        return .black
+    }
+    
+}
