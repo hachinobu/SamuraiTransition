@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        samuraiTransition.zanAngle = .vertical
+        samuraiTransition.zanAngle = .diagonally
         samuraiTransition.isAffineTransform = true
         samuraiTransition.duration = 0.33
     }

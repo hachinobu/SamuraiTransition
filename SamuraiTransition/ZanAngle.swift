@@ -12,9 +12,18 @@ public enum ZanAngle {
     
     case horizontal
     case vertical
+    case diagonally
     
     func isHorizontal() -> Bool {
         return self == .horizontal
+    }
+    
+    func isVertical() -> Bool {
+        return self == .vertical
+    }
+    
+    func isDiagonally() -> Bool {
+        return self == .diagonally
     }
     
 }
