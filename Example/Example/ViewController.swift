@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        samuraiTransition.samuraiDelegate = self
         samuraiTransition.zanAngle = .vertical
         samuraiTransition.isAffineTransform = true
         samuraiTransition.duration = 0.33
@@ -45,18 +44,6 @@ extension ViewController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         samuraiTransition.presenting = false
         return samuraiTransition
-    }
-    
-}
-
-extension ViewController: SamuraiTransitionDelegate {
-    
-    var zanPosition: CGPoint {
-        return view.center
-    }
-    
-    var zanColor: UIColor {
-        return .black
     }
     
 }

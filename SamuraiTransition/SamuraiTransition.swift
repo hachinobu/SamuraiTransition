@@ -14,8 +14,10 @@ public class SamuraiTransition: NSObject {
     public var presenting = true
     public var zanAngle = ZanAngle.horizontal
     public var isAffineTransform: Bool = true
+    public var zanPosition: CGPoint?
+    public var zanLineColor = UIColor.black
+    public var zanLineWidth: CGFloat = 1.0
     
-    public var samuraiDelegate: SamuraiTransitionDelegate?
     
     fileprivate weak var transitionContext: UIViewControllerContextTransitioning!
     fileprivate var containerView: UIView!
@@ -68,7 +70,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         containerView = transitionContext.containerView
         
         let zanTargetView = presenting ? fromView.snapshotView(afterScreenUpdates: false)! : toView.snapshotView(afterScreenUpdates: true)!
-        let zanPoint = samuraiDelegate?.zanPosition ?? containerView.center
+        let zanPoint = zanPosition ?? containerView.center
         
         let oneSideOffsetFrame: CGRect
         let otherSideOffsetFrame: CGRect
@@ -81,14 +83,14 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             oneSideOffsetFrame = divided.slice.offsetBy(dx: 0.0, dy: -divided.slice.height)
             otherSideOffsetFrame = divided.remainder.offsetBy(dx: 0.0, dy: divided.remainder.height)
             
-            zanLine = UIView(frame: CGRect(x: 0.0, y: zanPoint.y, width: 0.0, height: 1.0))
+            zanLine = UIView(frame: CGRect(x: 0.0, y: zanPoint.y, width: 0.0, height: zanLineWidth))
             zanEndPoint = CGSize(width: containerFrame.maxX, height: zanLine.frame.height)
         } else {
             divided = containerFrame.divided(atDistance: zanPoint.x, from: .minXEdge)
             oneSideOffsetFrame = divided.slice.offsetBy(dx: -divided.slice.width, dy: 0.0)
             otherSideOffsetFrame = divided.remainder.offsetBy(dx: divided.remainder.width, dy: 0.0)
             
-            zanLine = UIView(frame: CGRect(x: zanPoint.x, y: 0.0, width: 1.0, height: 100.0))
+            zanLine = UIView(frame: CGRect(x: zanPoint.x, y: 0.0, width: zanLineWidth, height: 100.0))
             zanEndPoint = CGSize(width: zanLine.frame.width, height: containerFrame.maxY)
         }
         
@@ -111,7 +113,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             coverView.frame = containerFrame
             containerView.insertSubview(coverView, belowSubview: toView)
             
-            zanLine.backgroundColor = samuraiDelegate?.zanColor ?? .black
+            zanLine.backgroundColor = zanLineColor
             containerView.addSubview(zanLine)
             
             UIView.animate(withDuration: zanLineDuration, animations: {
