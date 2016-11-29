@@ -18,7 +18,6 @@ public class SamuraiTransition: NSObject {
     public var zanLineColor = UIColor.black
     public var zanLineWidth: CGFloat = 1.0
     
-    
     fileprivate weak var transitionContext: UIViewControllerContextTransitioning!
     fileprivate var containerView: UIView!
     
@@ -99,9 +98,8 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             oneSideOffsetFrame = slice.offsetBy(dx: -slice.width, dy: 0.0)
             otherSideOffsetFrame = remainder.offsetBy(dx: remainder.width, dy: 0.0)
             
-            zanLine = UIView(frame: CGRect(x: zanPoint.x, y: 0.0, width: zanLineWidth, height: 100.0))
+            zanLine = UIView(frame: CGRect(x: zanPoint.x, y: 0.0, width: zanLineWidth, height: 0.0))
             zanEndPoint = CGSize(width: zanLine.frame.width, height: containerFrame.maxY)
-            
         } else {
             slice = containerFrame
             remainder = containerFrame
@@ -111,12 +109,9 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             zanLine = UIView(frame: CGRect(x: containerFrame.maxX, y: 0.0, width: 1.0, height: 1.0))
             zanEndPoint = .zero
             
-            let paths = maskPath(zanPosition: zanPoint)
-            oneSideMaskLayer = CAShapeLayer()
-            oneSideMaskLayer?.path = paths.oneSide.cgPath
-            
-            otherSideMaskLayer = CAShapeLayer()
-            otherSideMaskLayer?.path = paths.otherSide.cgPath
+            let maskLayers = maskLayer(zanPosition: zanPoint)
+            oneSideMaskLayer = maskLayers.oneSide
+            otherSideMaskLayer = maskLayers.otherSide
         }
         
         let oneSideView = zanTargetView.resizableSnapshotView(from: slice, afterScreenUpdates: false, withCapInsets: .zero)!
@@ -187,25 +182,37 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         
     }
     
-    private func maskPath(zanPosition: CGPoint) -> (oneSide: UIBezierPath, otherSide: UIBezierPath) {
+    private func maskLayer(zanPosition: CGPoint) -> (oneSide: CAShapeLayer, otherSide: CAShapeLayer) {
         
         let oneSidePath = UIBezierPath()
         oneSidePath.move(to: CGPoint(x: containerFrame.maxX, y: containerFrame.minY))
-        let oneSideBottomPoint = containerFrame.maxX - ((containerFrame.maxX - zanPosition.x) * 2)
-        oneSidePath.addLine(to: CGPoint(x: oneSideBottomPoint, y: containerFrame.maxY))
+        oneSidePath.addLine(to: zanPosition)
+        let ratio = containerFrame.maxY / zanPosition.y
+        if ratio.isInfinite {
+            fatalError("zanPosition.y is not 0. It will be infinite.")
+        }
+        let width = (containerFrame.maxX - zanPosition.x) * ratio
+        let bottomX = containerFrame.maxX - width
+        
+        oneSidePath.addLine(to: CGPoint(x: bottomX, y: containerFrame.maxY))
         oneSidePath.addLine(to: CGPoint(x: containerFrame.maxX, y: containerFrame.maxY))
         oneSidePath.addLine(to: CGPoint(x: containerFrame.maxX, y: containerFrame.minY))
         oneSidePath.close()
+        let oneSideLayer = CAShapeLayer()
+        oneSideLayer.path = oneSidePath.cgPath
         
         let otherSidePath = UIBezierPath()
         otherSidePath.move(to: CGPoint(x: containerFrame.minX, y: containerFrame.minY))
-        otherSidePath.addLine(to: CGPoint(x: containerFrame.minX, y: containerFrame.maxY))
-        otherSidePath.addLine(to: CGPoint(x: oneSideBottomPoint, y: containerFrame.maxY))
         otherSidePath.addLine(to: CGPoint(x: containerFrame.maxX, y: containerFrame.minY))
+        otherSidePath.addLine(to: CGPoint(x: bottomX, y: containerFrame.maxY))
+        otherSidePath.addLine(to: CGPoint(x: containerFrame.minX, y: containerFrame.maxY))
         otherSidePath.addLine(to: CGPoint(x: containerFrame.minX, y: containerFrame.minY))
         otherSidePath.close()
         
-        return (oneSidePath, otherSidePath)
+        let otherSideLayer = CAShapeLayer()
+        otherSideLayer.path = otherSidePath.cgPath
+        
+        return (oneSideLayer, otherSideLayer)
     }
     
 }
