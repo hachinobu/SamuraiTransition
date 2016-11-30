@@ -48,9 +48,9 @@ public class SamuraiTransition: NSObject {
     }()
     
     fileprivate var zanLineDuration: TimeInterval {
-        let zanDuration = duration - 0.1
-        if zanDuration >= 0.1 {
-            return 0.1
+        let zanDuration = duration - 0.15
+        if zanDuration > 0.0 {
+            return 0.15
         }
         return 0.0
     }
@@ -139,23 +139,28 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             containerView.insertSubview(coverView, belowSubview: toView)
             
             containerView.layer.addSublayer(lineLayer)
+            
+            CATransaction.begin()
+            CATransaction.setCompletionBlock {
+                lineLayer.removeFromSuperlayer()
+                UIView.animate(withDuration: self.duration - self.zanLineDuration, animations: {
+                    
+                    oneSideView.frame = oneSideOffsetFrame
+                    otherSideView.frame = otherSideOffsetFrame
+                    self.toView.alpha = 1.0
+                    self.toView.transform = CGAffineTransform.identity
+                    
+                }, completion: { _ in
+                    
+                    oneSideView.removeFromSuperview()
+                    otherSideView.removeFromSuperview()
+                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+                    
+                })
+            }
             let animation = lineLayerAnimation(lineLayer: lineLayer)
             lineLayer.add(animation, forKey: nil)
-            
-            UIView.animate(withDuration: duration - zanLineDuration, delay: zanLineDuration, animations: {
-                
-                oneSideView.frame = oneSideOffsetFrame
-                otherSideView.frame = otherSideOffsetFrame
-                self.toView.alpha = 1.0
-                self.toView.transform = CGAffineTransform.identity
-                
-            }, completion: { _ in
-                
-                oneSideView.removeFromSuperview()
-                otherSideView.removeFromSuperview()
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                
-            })
+            CATransaction.commit()
             
         } else {
             
@@ -192,7 +197,8 @@ extension SamuraiTransition {
         lineAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         lineAnimation.fromValue = 0.0
         lineAnimation.toValue = 1.0
-        lineAnimation.delegate = self
+        lineAnimation.fillMode = kCAFillModeForwards
+        lineAnimation.isRemovedOnCompletion = false
         lineAnimation.setValue(lineLayer, forKey: "LineLayer")
         
         return lineAnimation
@@ -204,7 +210,6 @@ extension SamuraiTransition {
         let path = UIBezierPath()
         path.move(to: start)
         path.addLine(to: end)
-        path.close()
         zanLineLayer.path = path.cgPath
         zanLineLayer.fillColor = nil
         zanLineLayer.strokeColor = zanLineColor.cgColor
@@ -226,6 +231,7 @@ extension SamuraiTransition {
     }
     
     fileprivate func maskLayer(zanPosition: CGPoint) -> (oneSide: CAShapeLayer, otherSide: CAShapeLayer) {
+        
         let bottomX = diagnoallyBottomX(zanPosition: zanPosition)
         
         let oneSidePath = oneSideBezierPath(zanPosition: zanPosition, bottomX: bottomX)
@@ -240,6 +246,7 @@ extension SamuraiTransition {
     }
     
     private func oneSideBezierPath(zanPosition: CGPoint, bottomX: CGFloat) -> UIBezierPath {
+        
         let oneSidePath = UIBezierPath()
         oneSidePath.move(to: CGPoint(x: containerFrame.maxX, y: containerFrame.minY))
         oneSidePath.addLine(to: zanPosition)
@@ -252,6 +259,7 @@ extension SamuraiTransition {
     }
     
     private func otherSideBezierPath(zanPosition: CGPoint, bottomX: CGFloat) -> UIBezierPath {
+        
         let otherSidePath = UIBezierPath()
         otherSidePath.move(to: CGPoint(x: containerFrame.minX, y: containerFrame.minY))
         otherSidePath.addLine(to: CGPoint(x: containerFrame.maxX, y: containerFrame.minY))
@@ -264,14 +272,3 @@ extension SamuraiTransition {
     }
     
 }
-
-extension SamuraiTransition: CAAnimationDelegate {
-    
-    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if let layer = anim.value(forKey: "LineLayer") as? CAShapeLayer {
-            layer.removeFromSuperlayer()
-        }
-    }
-    
-}
-
