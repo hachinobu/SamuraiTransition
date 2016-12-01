@@ -48,9 +48,9 @@ public class SamuraiTransition: NSObject {
     }()
     
     fileprivate var zanLineDuration: TimeInterval {
-        let zanDuration = duration - 0.15
+        let zanDuration = duration - 0.16
         if zanDuration > 0.0 {
-            return 0.15
+            return 0.16
         }
         return 0.0
     }
