@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,24 +20,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqv-bE-8qc">
-                                <rect key="frame" x="152" y="318" width="70" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Cut in two"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="samurai" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-Ew-imT">
+                                <rect key="frame" x="0.0" y="151" width="375" height="365"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X32-j1-IjL">
+                                <rect key="frame" x="16" y="597" width="68" height="30"/>
+                                <state key="normal" title="horizontal"/>
                                 <connections>
-                                    <action selector="zanAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k8Y-qf-lKj"/>
+                                    <action selector="horizontalZan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B7u-8B-EKV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTj-0D-XtM">
+                                <rect key="frame" x="289" y="597" width="70" height="30"/>
+                                <state key="normal" title="diagonally"/>
+                                <connections>
+                                    <action selector="diagonallyZan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QhB-H3-5Dm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqv-bE-8qc">
+                                <rect key="frame" x="161.5" y="597" width="51" height="30"/>
+                                <state key="normal" title="vertical"/>
+                                <connections>
+                                    <action selector="verticalZan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jcR-QX-fTm"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="pqv-bE-8qc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GYh-xS-b6D"/>
+                            <constraint firstAttribute="trailing" secondItem="Rbl-Ew-imT" secondAttribute="trailing" id="0TD-aK-YLx"/>
+                            <constraint firstItem="X32-j1-IjL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="5ud-UX-ZvN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="X32-j1-IjL" secondAttribute="bottom" constant="40" id="6xM-d7-55G"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pqv-bE-8qc" secondAttribute="bottom" constant="40" id="B8f-jI-usK"/>
+                            <constraint firstItem="Rbl-Ew-imT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LvC-K5-gFb"/>
+                            <constraint firstAttribute="trailing" secondItem="rTj-0D-XtM" secondAttribute="trailing" constant="16" id="M0P-g7-rGn"/>
+                            <constraint firstItem="Rbl-Ew-imT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="P1v-k5-RIN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rTj-0D-XtM" secondAttribute="bottom" constant="40" id="j8z-5z-VxU"/>
+                            <constraint firstItem="Rbl-Ew-imT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nVt-2n-zbs"/>
                             <constraint firstItem="pqv-bE-8qc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zh7-jr-ul0"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-130.40000000000001" y="117.39130434782609"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="fjJ-MF-dQx">
@@ -51,12 +75,27 @@
                     <view key="view" contentMode="scaleToFill" id="b9W-oh-JCD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="samurai2" translatesAutoresizingMaskIntoConstraints="NO" id="gg8-se-dJn">
+                                <rect key="frame" x="0.0" y="133" width="375" height="400"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gg8-se-dJn" firstAttribute="centerY" secondItem="b9W-oh-JCD" secondAttribute="centerY" id="hS3-OC-SW8"/>
+                            <constraint firstItem="gg8-se-dJn" firstAttribute="leading" secondItem="b9W-oh-JCD" secondAttribute="leading" id="nVU-f4-dnK"/>
+                            <constraint firstAttribute="trailing" secondItem="gg8-se-dJn" secondAttribute="trailing" id="nh2-oS-LTc"/>
+                            <constraint firstItem="gg8-se-dJn" firstAttribute="centerX" secondItem="b9W-oh-JCD" secondAttribute="centerX" id="vtJ-HL-1os"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1w-M2-Wfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="33"/>
+            <point key="canvasLocation" x="536.79999999999995" y="116.49175412293854"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="samurai" width="400" height="365"/>
+        <image name="samurai2" width="313" height="400"/>
+    </resources>
 </document>

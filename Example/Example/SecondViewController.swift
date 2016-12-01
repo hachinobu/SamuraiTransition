@@ -12,7 +12,6 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDismiss))
         view.addGestureRecognizer(tapRecognizer)
     }

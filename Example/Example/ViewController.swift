@@ -15,19 +15,31 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        samuraiTransition.zanAngle = .diagonally
-        samuraiTransition.isAffineTransform = true
-        samuraiTransition.duration = 0.33
+        samuraiTransition.duration = 1.0
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func zanAction(_ sender: Any) {
+    
+    @IBAction func horizontalZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
-        vc.modalPresentationStyle = .overCurrentContext
+        samuraiTransition.zanAngle = .horizontal
+        vc.transitioningDelegate = self
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func verticalZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+        samuraiTransition.zanAngle = .vertical
+        vc.transitioningDelegate = self
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func diagonallyZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+        samuraiTransition.zanAngle = .diagonally
         vc.transitioningDelegate = self
         present(vc, animated: true, completion: nil)
     }
