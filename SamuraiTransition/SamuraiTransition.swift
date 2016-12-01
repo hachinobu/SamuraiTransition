@@ -16,7 +16,7 @@ public class SamuraiTransition: NSObject {
     public var isAffineTransform: Bool = true
     public var zanPosition: CGPoint?
     public var zanLineColor = UIColor.black
-    public var zanLineWidth: CGFloat = 0.3
+    public var zanLineWidth: CGFloat = 1.0
     
     fileprivate weak var transitionContext: UIViewControllerContextTransitioning!
     fileprivate var containerView: UIView!
