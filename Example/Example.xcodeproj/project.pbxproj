@@ -14,6 +14,7 @@
 		C2F716731DE9568700480CAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F716711DE9568700480CAB /* LaunchScreen.storyboard */; };
 		C2F716821DE956A800480CAB /* SamuraiTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F7167F1DE9569700480CAB /* SamuraiTransition.framework */; };
 		C2F7168A1DE965E000480CAB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716891DE965E000480CAB /* SecondViewController.swift */; };
+		C2F949FB1DF1328900B5D736 /* SamuraiTransition.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F7167F1DE9569700480CAB /* SamuraiTransition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,19 @@
 			remoteInfo = SamuraiTransition;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C2F949FA1DF1327C00B5D736 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C2F949FB1DF1328900B5D736 /* SamuraiTransition.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C2F716651DE9568700480CAB /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +120,7 @@
 				C2F716611DE9568700480CAB /* Sources */,
 				C2F716621DE9568700480CAB /* Frameworks */,
 				C2F716631DE9568700480CAB /* Resources */,
+				C2F949FA1DF1327C00B5D736 /* CopyFiles */,
 			);
 			buildRules = (
 			);
