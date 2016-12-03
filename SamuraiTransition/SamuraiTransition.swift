@@ -272,3 +272,18 @@ extension SamuraiTransition {
     }
     
 }
+
+extension SamuraiTransition: UIViewControllerTransitioningDelegate {
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.presenting = true
+        return self
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.presenting = false
+        return self
+    }
+    
+}
+
