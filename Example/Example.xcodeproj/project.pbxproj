@@ -74,9 +74,9 @@
 		C2F7165C1DE9568700480CAB = {
 			isa = PBXGroup;
 			children = (
-				C2F7167A1DE9569600480CAB /* SamuraiTransition.xcodeproj */,
 				C2F716671DE9568700480CAB /* Example */,
 				C2F716661DE9568700480CAB /* Products */,
+				C2F7167A1DE9569600480CAB /* SamuraiTransition.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
