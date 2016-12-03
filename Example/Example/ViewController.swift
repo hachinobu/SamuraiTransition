@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SamuraiTransition
 
 class ViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     
     @IBAction func horizontalZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zanAngle = .horizontal
         present(vc, animated: true, completion: nil)
     }
     

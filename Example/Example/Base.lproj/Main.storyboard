@@ -25,21 +25,24 @@
                                 <rect key="frame" x="0.0" y="151" width="375" height="365"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X32-j1-IjL">
-                                <rect key="frame" x="16" y="597" width="68" height="30"/>
+                                <rect key="frame" x="16" y="591" width="97" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="horizontal"/>
                                 <connections>
                                     <action selector="horizontalZan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B7u-8B-EKV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTj-0D-XtM">
-                                <rect key="frame" x="289" y="597" width="70" height="30"/>
+                                <rect key="frame" x="259" y="591" width="100" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="diagonally"/>
                                 <connections>
                                     <action selector="diagonallyZan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QhB-H3-5Dm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqv-bE-8qc">
-                                <rect key="frame" x="161.5" y="597" width="51" height="30"/>
+                                <rect key="frame" x="151" y="591" width="72" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="vertical"/>
                                 <connections>
                                     <action selector="verticalZan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jcR-QX-fTm"/>
