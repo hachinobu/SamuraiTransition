@@ -14,7 +14,7 @@ public class SamuraiTransition: NSObject {
     public var presenting = true
     public var zanAngle = ZanAngle.horizontal
     public var isAffineTransform: Bool = true
-    public var zanPosition: CGPoint?
+    public var zanPoint: CGPoint?
     public var zanLineColor = UIColor.black
     public var zanLineWidth: CGFloat = 1.0
     
@@ -69,7 +69,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         containerView = transitionContext.containerView
         
         let zanTargetView = presenting ? fromView.snapshotView(afterScreenUpdates: false)! : toView.snapshotView(afterScreenUpdates: true)!
-        let zanPoint = zanPosition ?? containerView.center
+        let point = zanPoint ?? containerView.center
         
         let oneSideOffsetFrame: CGRect
         let otherSideOffsetFrame: CGRect
@@ -82,23 +82,23 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         
         if zanAngle.isHorizontal() {
             
-            let divided = containerFrame.divided(atDistance: zanPoint.y, from: .minYEdge)
+            let divided = containerFrame.divided(atDistance: point.y, from: .minYEdge)
             slice = divided.slice
             remainder = divided.remainder
             oneSideOffsetFrame = slice.offsetBy(dx: 0.0, dy: -slice.height)
             otherSideOffsetFrame = remainder.offsetBy(dx: 0.0, dy: remainder.height)
             
-            lineLayer = zanLineLayer(from: CGPoint(x: containerFrame.minX, y: zanPoint.y), end: CGPoint(x: containerFrame.maxX, y: zanPoint.y))
+            lineLayer = zanLineLayer(from: CGPoint(x: containerFrame.minX, y: point.y), end: CGPoint(x: containerFrame.maxX, y: point.y))
             
         } else if zanAngle.isVertical() {
             
-            let divided = containerFrame.divided(atDistance: zanPoint.x, from: .minXEdge)
+            let divided = containerFrame.divided(atDistance: point.x, from: .minXEdge)
             slice = divided.slice
             remainder = divided.remainder
             oneSideOffsetFrame = slice.offsetBy(dx: -slice.width, dy: 0.0)
             otherSideOffsetFrame = remainder.offsetBy(dx: remainder.width, dy: 0.0)
             
-            lineLayer = zanLineLayer(from: CGPoint(x: zanPoint.x, y: containerFrame.minY), end: CGPoint(x: zanPoint.x, y: containerFrame.maxY))
+            lineLayer = zanLineLayer(from: CGPoint(x: point.x, y: containerFrame.minY), end: CGPoint(x: point.x, y: containerFrame.maxY))
             
         } else {
             
@@ -107,11 +107,11 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             oneSideOffsetFrame = slice.offsetBy(dx: slice.width, dy: slice.height)
             otherSideOffsetFrame = remainder.offsetBy(dx: -remainder.width, dy: -remainder.height)
             
-            let maskLayers = maskLayer(zanPosition: zanPoint)
+            let maskLayers = maskLayer(zanPosition: point)
             oneSideMaskLayer = maskLayers.oneSide
             otherSideMaskLayer = maskLayers.otherSide
             
-            let bottomX = diagnoallyBottomX(zanPosition: zanPoint)
+            let bottomX = diagnoallyBottomX(zanPosition: point)
             lineLayer = zanLineLayer(from: CGPoint(x: containerFrame.maxX, y: containerFrame.minY), end: CGPoint(x: bottomX, y: containerFrame.maxY))
             
         }
