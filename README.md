@@ -117,6 +117,9 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 * Swift 3.0
 
 # Installation
+#### [CocoaPods](https://github.com/cocoapods/cocoapods)
+
+`pod 'SamuraiTransition'`
 
 # License
 SamuraiTransiton is available under the MIT license. See the LICENSE file for more info.
