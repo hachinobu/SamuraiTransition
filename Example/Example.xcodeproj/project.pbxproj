@@ -13,7 +13,7 @@
 		C2F716701DE9568700480CAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2F7166F1DE9568700480CAB /* Assets.xcassets */; };
 		C2F716731DE9568700480CAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F716711DE9568700480CAB /* LaunchScreen.storyboard */; };
 		C2F716821DE956A800480CAB /* SamuraiTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F7167F1DE9569700480CAB /* SamuraiTransition.framework */; };
-		C2F7168A1DE965E000480CAB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716891DE965E000480CAB /* SecondViewController.swift */; };
+		C2F7168A1DE965E000480CAB /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716891DE965E000480CAB /* ModalViewController.swift */; };
 		C2F949FB1DF1328900B5D736 /* SamuraiTransition.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F7167F1DE9569700480CAB /* SamuraiTransition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -56,7 +56,7 @@
 		C2F716721DE9568700480CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2F716741DE9568700480CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2F7167A1DE9569600480CAB /* SamuraiTransition.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SamuraiTransition.xcodeproj; path = ../SamuraiTransition.xcodeproj; sourceTree = "<group>"; };
-		C2F716891DE965E000480CAB /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		C2F716891DE965E000480CAB /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			children = (
 				C2F716681DE9568700480CAB /* AppDelegate.swift */,
 				C2F7166A1DE9568700480CAB /* ViewController.swift */,
-				C2F716891DE965E000480CAB /* SecondViewController.swift */,
+				C2F716891DE965E000480CAB /* ModalViewController.swift */,
 				C2F7166C1DE9568700480CAB /* Main.storyboard */,
 				C2F7166F1DE9568700480CAB /* Assets.xcassets */,
 				C2F716711DE9568700480CAB /* LaunchScreen.storyboard */,
@@ -200,7 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F7168A1DE965E000480CAB /* SecondViewController.swift in Sources */,
+				C2F7168A1DE965E000480CAB /* ModalViewController.swift in Sources */,
 				C2F7166B1DE9568700480CAB /* ViewController.swift in Sources */,
 				C2F716691DE9568700480CAB /* AppDelegate.swift in Sources */,
 			);

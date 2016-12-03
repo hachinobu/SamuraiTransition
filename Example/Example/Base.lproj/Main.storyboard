@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="-130.40000000000001" y="117.39130434782609"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Modal View Controller-->
         <scene sceneID="fjJ-MF-dQx">
             <objects>
-                <viewController storyboardIdentifier="SecondViewController" id="EeP-bH-J7t" customClass="SecondViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalViewController" id="EeP-bH-J7t" customClass="ModalViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7hU-JY-kce"/>
                         <viewControllerLayoutGuide type="bottom" id="2Jv-aw-23W"/>

@@ -7,15 +7,11 @@
 //
 
 import UIKit
-import SamuraiTransition
 
 class ViewController: UIViewController {
-
-    let samuraiTransition = SamuraiTransition()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        samuraiTransition.duration = 1.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,38 +20,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func horizontalZan(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
-        samuraiTransition.zanAngle = .horizontal
-        vc.transitioningDelegate = self
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
         present(vc, animated: true, completion: nil)
     }
     
     @IBAction func verticalZan(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
-        samuraiTransition.zanAngle = .vertical
-        vc.transitioningDelegate = self
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zanAngle = .vertical
         present(vc, animated: true, completion: nil)
     }
     
     @IBAction func diagonallyZan(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
-        samuraiTransition.zanAngle = .diagonally
-        vc.transitioningDelegate = self
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zanAngle = .diagonally
         present(vc, animated: true, completion: nil)
     }
 
-}
-
-extension ViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        samuraiTransition.presenting = true
-        return samuraiTransition
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        samuraiTransition.presenting = false
-        return samuraiTransition
-    }
-    
 }
