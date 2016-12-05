@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C27839E71DF58ECF004B1E0C /* ZanViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27839E61DF58ECF004B1E0C /* ZanViewInfo.swift */; };
 		C2F716561DE9565000480CAB /* SamuraiTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F716541DE9565000480CAB /* SamuraiTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2F716861DE959FF00480CAB /* ZanAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716851DE959FF00480CAB /* ZanAngle.swift */; };
 		C2F716881DE95ABC00480CAB /* SamuraiTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C27839E61DF58ECF004B1E0C /* ZanViewInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanViewInfo.swift; sourceTree = "<group>"; };
 		C2F716511DE9565000480CAB /* SamuraiTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SamuraiTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F716541DE9565000480CAB /* SamuraiTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SamuraiTransition.h; sourceTree = "<group>"; };
 		C2F716551DE9565000480CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				C2F716551DE9565000480CAB /* Info.plist */,
 				C2F716851DE959FF00480CAB /* ZanAngle.swift */,
 				C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */,
+				C27839E61DF58ECF004B1E0C /* ZanViewInfo.swift */,
 				C2F716911DF2665C00480CAB /* SamuraiViewController.swift */,
 			);
 			path = SamuraiTransition;
@@ -144,6 +147,7 @@
 				C2F716861DE959FF00480CAB /* ZanAngle.swift in Sources */,
 				C2F716881DE95ABC00480CAB /* SamuraiTransition.swift in Sources */,
 				C2F716921DF2665C00480CAB /* SamuraiViewController.swift in Sources */,
+				C27839E71DF58ECF004B1E0C /* ZanViewInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
