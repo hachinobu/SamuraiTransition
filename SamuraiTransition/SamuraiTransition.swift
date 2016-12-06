@@ -71,102 +71,55 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         let zanTargetView = presenting ? fromView.snapshotView(afterScreenUpdates: false)! : toView.snapshotView(afterScreenUpdates: true)!
         let point = zanPoint ?? containerView.center
         
-        let oneSideOffsetFrame: CGRect
-        let otherSideOffsetFrame: CGRect
-        let slice: CGRect
-        let remainder: CGRect
+        let lineLayers: [CAShapeLayer] = zanAngle.zanLineLayers(containerFrame: containerFrame, zanPoint: point, width: zanLineWidth, color: zanLineColor)
+        let zanViewInfoList: [ZanViewInfo] = zanAngle.angleZanViewInfoList(containerFrame: containerFrame, zanPoint: point)
+        let zanViews = zanViewInfoList.map { zanTargetView.resizableSnapshotView(from: $0.insideFrame, afterScreenUpdates: false, withCapInsets: .zero)! }
         
-        var oneSideMaskLayer: CAShapeLayer? = nil
-        var otherSideMaskLayer: CAShapeLayer? = nil
-        let lineLayer: CAShapeLayer
-        
-        if zanAngle.isHorizontal() {
-            
-            let divided = containerFrame.divided(atDistance: point.y, from: .minYEdge)
-            slice = divided.slice
-            remainder = divided.remainder
-            oneSideOffsetFrame = slice.offsetBy(dx: 0.0, dy: -slice.height)
-            otherSideOffsetFrame = remainder.offsetBy(dx: 0.0, dy: remainder.height)
-            
-            lineLayer = zanLineLayer(from: CGPoint(x: containerFrame.minX, y: point.y), end: CGPoint(x: containerFrame.maxX, y: point.y))
-            
-        } else if zanAngle.isVertical() {
-            
-            let divided = containerFrame.divided(atDistance: point.x, from: .minXEdge)
-            slice = divided.slice
-            remainder = divided.remainder
-            oneSideOffsetFrame = slice.offsetBy(dx: -slice.width, dy: 0.0)
-            otherSideOffsetFrame = remainder.offsetBy(dx: remainder.width, dy: 0.0)
-            
-            lineLayer = zanLineLayer(from: CGPoint(x: point.x, y: containerFrame.minY), end: CGPoint(x: point.x, y: containerFrame.maxY))
-            
-        } else {
-            
-            slice = containerFrame
-            remainder = containerFrame
-            oneSideOffsetFrame = slice.offsetBy(dx: slice.width, dy: slice.height)
-            otherSideOffsetFrame = remainder.offsetBy(dx: -remainder.width, dy: -remainder.height)
-            
-            let maskLayers = maskLayer(zanPosition: point)
-            oneSideMaskLayer = maskLayers.oneSide
-            otherSideMaskLayer = maskLayers.otherSide
-            
-            let bottomX = diagnoallyBottomX(zanPosition: point)
-            lineLayer = zanLineLayer(from: CGPoint(x: containerFrame.maxX, y: containerFrame.minY), end: CGPoint(x: bottomX, y: containerFrame.maxY))
-            
+        zip(zanViews, zanViewInfoList).forEach { (view, info) in
+            containerView.addSubview(view)
+            view.frame = info.animateViewFrame(isPresenting: presenting)
+            view.layer.mask = info.mask
         }
-        
-        let oneSideView = zanTargetView.resizableSnapshotView(from: slice, afterScreenUpdates: false, withCapInsets: .zero)!
-        let otherSideView = zanTargetView.resizableSnapshotView(from: remainder, afterScreenUpdates: false, withCapInsets: .zero)!
-        
-        containerView.addSubview(oneSideView)
-        oneSideView.layer.mask = oneSideMaskLayer
-        
-        containerView.addSubview(otherSideView)
-        otherSideView.layer.mask = otherSideMaskLayer
         
         if presenting {
             
-            oneSideView.frame = slice
-            otherSideView.frame = remainder
-            containerView.insertSubview(toView, belowSubview: oneSideView)
-            
+            containerView.insertSubview(toView, aboveSubview: fromView)
             toView.alpha = 0.0
             if isAffineTransform {
                 toView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             }
+            
             coverView.frame = containerFrame
             containerView.insertSubview(coverView, belowSubview: toView)
-            
-            containerView.layer.addSublayer(lineLayer)
+            lineLayers.forEach { containerView.layer.addSublayer($0) }
             
             CATransaction.begin()
             CATransaction.setCompletionBlock {
-                lineLayer.removeFromSuperlayer()
+                lineLayers.forEach { $0.removeFromSuperlayer() }
                 UIView.animate(withDuration: self.duration - self.zanLineDuration, animations: {
                     
-                    oneSideView.frame = oneSideOffsetFrame
-                    otherSideView.frame = otherSideOffsetFrame
+                    zip(zanViews, zanViewInfoList).forEach { $0.0.frame = $0.1.outSideFrame }
                     self.toView.alpha = 1.0
                     self.toView.transform = CGAffineTransform.identity
                     
                 }, completion: { _ in
                     
-                    oneSideView.removeFromSuperview()
-                    otherSideView.removeFromSuperview()
+                    zanViews.forEach { $0.removeFromSuperview() }
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                     
                 })
             }
-            let animation = lineLayerAnimation(lineLayer: lineLayer)
-            lineLayer.add(animation, forKey: nil)
+            
+            lineLayers.forEach { lineLayer in
+                let animation = lineLayerAnimation()
+                lineLayer.add(animation, forKey: nil)
+            }
+            
             CATransaction.commit()
             
         } else {
             
-            oneSideView.frame = oneSideOffsetFrame
-            otherSideView.frame = otherSideOffsetFrame
-            containerView.insertSubview(fromView, belowSubview: oneSideView)
+            containerView.insertSubview(fromView, belowSubview: toView)
             
             toView.alpha = 0.0
             UIView.animate(withDuration: duration, animations: {
@@ -174,8 +127,8 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                 if self.isAffineTransform {
                     self.fromView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                 }
-                oneSideView.frame = slice
-                otherSideView.frame = remainder
+                zip(zanViews, zanViewInfoList).forEach { $0.0.frame = $0.1.insideFrame }
+                
             }, completion: { _ in
                 self.toView.alpha = 1.0
                 self.fromView.removeFromSuperview()
@@ -190,7 +143,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
 
 extension SamuraiTransition {
     
-    fileprivate func lineLayerAnimation(lineLayer: CAShapeLayer) -> CABasicAnimation {
+    fileprivate func lineLayerAnimation() -> CABasicAnimation {
         
         let lineAnimation = CABasicAnimation(keyPath: "strokeEnd")
         lineAnimation.duration = zanLineDuration
@@ -199,76 +152,8 @@ extension SamuraiTransition {
         lineAnimation.toValue = 1.0
         lineAnimation.fillMode = kCAFillModeForwards
         lineAnimation.isRemovedOnCompletion = false
-        lineAnimation.setValue(lineLayer, forKey: "LineLayer")
         
         return lineAnimation
-    }
-    
-    fileprivate func zanLineLayer(from start: CGPoint, end: CGPoint) -> CAShapeLayer {
-        
-        let zanLineLayer = CAShapeLayer()
-        let path = UIBezierPath()
-        path.move(to: start)
-        path.addLine(to: end)
-        zanLineLayer.path = path.cgPath
-        zanLineLayer.fillColor = nil
-        zanLineLayer.strokeColor = zanLineColor.cgColor
-        zanLineLayer.lineWidth = zanLineWidth
-        return zanLineLayer
-        
-    }
-    
-    fileprivate func diagnoallyBottomX(zanPosition: CGPoint) -> CGFloat {
-        
-        let ratio = containerFrame.maxY / zanPosition.y
-        if ratio.isInfinite {
-            fatalError("zanPosition.y is not 0. It will be infinite.")
-        }
-        let width = (containerFrame.maxX - zanPosition.x) * ratio
-        let bottomX = containerFrame.maxX - width
-        
-        return bottomX
-    }
-    
-    fileprivate func maskLayer(zanPosition: CGPoint) -> (oneSide: CAShapeLayer, otherSide: CAShapeLayer) {
-        
-        let bottomX = diagnoallyBottomX(zanPosition: zanPosition)
-        
-        let oneSidePath = oneSideBezierPath(zanPosition: zanPosition, bottomX: bottomX)
-        let oneSideLayer = CAShapeLayer()
-        oneSideLayer.path = oneSidePath.cgPath
-        
-        let otherSidePath = otherSideBezierPath(zanPosition: zanPosition, bottomX: bottomX)
-        let otherSideLayer = CAShapeLayer()
-        otherSideLayer.path = otherSidePath.cgPath
-        
-        return (oneSideLayer, otherSideLayer)
-    }
-    
-    private func oneSideBezierPath(zanPosition: CGPoint, bottomX: CGFloat) -> UIBezierPath {
-        
-        let oneSidePath = UIBezierPath()
-        oneSidePath.move(to: CGPoint(x: containerFrame.maxX, y: containerFrame.minY))
-        oneSidePath.addLine(to: zanPosition)
-        oneSidePath.addLine(to: CGPoint(x: bottomX, y: containerFrame.maxY))
-        oneSidePath.addLine(to: CGPoint(x: containerFrame.maxX, y: containerFrame.maxY))
-        oneSidePath.addLine(to: CGPoint(x: containerFrame.maxX, y: containerFrame.minY))
-        oneSidePath.close()
-        
-        return oneSidePath
-    }
-    
-    private func otherSideBezierPath(zanPosition: CGPoint, bottomX: CGFloat) -> UIBezierPath {
-        
-        let otherSidePath = UIBezierPath()
-        otherSidePath.move(to: CGPoint(x: containerFrame.minX, y: containerFrame.minY))
-        otherSidePath.addLine(to: CGPoint(x: containerFrame.maxX, y: containerFrame.minY))
-        otherSidePath.addLine(to: CGPoint(x: bottomX, y: containerFrame.maxY))
-        otherSidePath.addLine(to: CGPoint(x: containerFrame.minX, y: containerFrame.maxY))
-        otherSidePath.addLine(to: CGPoint(x: containerFrame.minX, y: containerFrame.minY))
-        otherSidePath.close()
-        
-        return otherSidePath
     }
     
 }
