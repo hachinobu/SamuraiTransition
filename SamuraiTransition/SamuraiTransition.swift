@@ -71,14 +71,13 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         let zanTargetView = presenting ? fromView.snapshotView(afterScreenUpdates: false)! : toView.snapshotView(afterScreenUpdates: true)!
         let point = zanPoint ?? containerView.center
         
-        let lineLayers: [CAShapeLayer] = zanAngle.zanLineLayers(containerFrame: containerFrame, zanPoint: point, width: zanLineWidth, color: zanLineColor)
-        let zanViewInfoList: [ZanViewInfo] = zanAngle.angleZanViewInfoList(containerFrame: containerFrame, zanPoint: point)
-        let zanViews = zanViewInfoList.map { zanTargetView.resizableSnapshotView(from: $0.insideFrame, afterScreenUpdates: false, withCapInsets: .zero)! }
+        let samuraiConfig = zanAngle.samuraiConfig(containerFrame: containerFrame, zanPoint: point, width: zanLineWidth, color: zanLineColor)
+        let zanViews = samuraiConfig.zanViewConfigList.map { zanTargetView.resizableSnapshotView(from: $0.insideFrame, afterScreenUpdates: false, withCapInsets: .zero)! }
         
-        zip(zanViews, zanViewInfoList).forEach { (view, info) in
+        zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
             containerView.addSubview(view)
-            view.frame = info.animateViewFrame(isPresenting: presenting)
-            view.layer.mask = info.mask
+            view.frame = config.viewFrame(isPresenting: presenting)
+            view.layer.mask = config.mask
         }
         
         if presenting {
@@ -91,14 +90,14 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             
             coverView.frame = containerFrame
             containerView.insertSubview(coverView, belowSubview: toView)
-            lineLayers.forEach { containerView.layer.addSublayer($0) }
+            samuraiConfig.lineLayers.forEach { containerView.layer.addSublayer($0) }
             
             CATransaction.begin()
             CATransaction.setCompletionBlock {
-                lineLayers.forEach { $0.removeFromSuperlayer() }
+                samuraiConfig.lineLayers.forEach { $0.removeFromSuperlayer() }
                 UIView.animate(withDuration: self.duration - self.zanLineDuration, animations: {
                     
-                    zip(zanViews, zanViewInfoList).forEach { $0.0.frame = $0.1.outSideFrame }
+                    zip(zanViews, samuraiConfig.zanViewConfigList).forEach { $0.0.frame = $0.1.outSideFrame }
                     self.toView.alpha = 1.0
                     self.toView.transform = CGAffineTransform.identity
                     
@@ -110,7 +109,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                 })
             }
             
-            lineLayers.forEach { lineLayer in
+            samuraiConfig.lineLayers.forEach { lineLayer in
                 let animation = lineLayerAnimation()
                 lineLayer.add(animation, forKey: nil)
             }
@@ -127,7 +126,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                 if self.isAffineTransform {
                     self.fromView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                 }
-                zip(zanViews, zanViewInfoList).forEach { $0.0.frame = $0.1.insideFrame }
+                zip(zanViews, samuraiConfig.zanViewConfigList).forEach { $0.0.frame = $0.1.insideFrame }
                 
             }, completion: { _ in
                 self.toView.alpha = 1.0
