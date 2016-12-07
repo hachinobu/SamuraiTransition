@@ -31,14 +31,14 @@ class ViewController: UIViewController {
     @IBAction func verticalZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
         // customization
-        vc.samuraiTransition.zanAngle = .vertical
+        vc.samuraiTransition.zan = .vertical
         present(vc, animated: true, completion: nil)
     }
     
     @IBAction func diagonallyZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
         // customization
-        vc.samuraiTransition.zanAngle = .diagonally
+        vc.samuraiTransition.zan = .diagonally
         present(vc, animated: true, completion: nil)
     }
 
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     //presenting or not
     public var presenting = true
     //horizontal　or vertical or diagonally
-    public var zanAngle = ZanAngle.horizontal
+    public var zan = Zan.horizontal
     //enable or disable affine processing when ModalViewcontroller appears 
     public var isAffineTransform: Bool = true
     //Passing point of the sword line
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         transition.duration = 1.0
-        transition.zanAngle = ZanAngle.vertical
+        transition.zan = Zan.vertical
         transition.isAffineTransform = false
         transition.zanLineColor = .blue
         transition.zanLineWidth = 2.0
