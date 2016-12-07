@@ -1,5 +1,5 @@
 //
-//  ZanViewInfo.swift
+//  ZanViewConfig.swift
 //  SamuraiTransition
 //
 //  Created by Nishinobu.Takahiro on 2016/12/05.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ZanViewInfo {
+struct ZanViewConfig: ZanViewConfigProtocol {
     
     let insideFrame: CGRect
     let outSideFrame: CGRect
@@ -18,10 +18,6 @@ struct ZanViewInfo {
         self.insideFrame = insideFrame
         self.outSideFrame = outSideFrame
         self.mask = mask
-    }
-    
-    func animateViewFrame(isPresenting: Bool) -> CGRect {
-        return isPresenting ? insideFrame : outSideFrame
     }
     
 }
