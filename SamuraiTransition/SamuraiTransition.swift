@@ -12,7 +12,7 @@ public class SamuraiTransition: NSObject {
 
     public var duration: TimeInterval = 0.33
     public var presenting = true
-    public var zanAngle = ZanAngle.horizontal
+    public var zanAngle = Zan.horizontal
     public var isAffineTransform: Bool = true
     public var zanPoint: CGPoint?
     public var zanLineColor = UIColor.black

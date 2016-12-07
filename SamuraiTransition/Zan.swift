@@ -1,5 +1,5 @@
 //
-//  ZanAngle.swift
+//  Zan.swift
 //  SamuraiTransition
 //
 //  Created by Takahiro Nishinobu on 2016/11/26.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ZanAngle {
+public enum Zan {
     
     case horizontal
     case vertical
@@ -18,13 +18,13 @@ public enum ZanAngle {
         
         switch self {
         case .horizontal:
-            return HorizontalZanAngleConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return HorizontalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
             
         case .vertical:
-            return VerticalZanAngleConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return VerticalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
             
         case .diagonally:
-            return DiagonallyZanAngleConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return DiagonallyZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
         }
         
     }
