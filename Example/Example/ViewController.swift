@@ -22,19 +22,19 @@ class ViewController: UIViewController {
     
     @IBAction func horizontalZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
-        vc.samuraiTransition.zanAngle = .horizontal
+        vc.samuraiTransition.zan = .horizontal
         present(vc, animated: true, completion: nil)
     }
     
     @IBAction func verticalZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
-        vc.samuraiTransition.zanAngle = .vertical
+        vc.samuraiTransition.zan = .vertical
         present(vc, animated: true, completion: nil)
     }
     
     @IBAction func diagonallyZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
-        vc.samuraiTransition.zanAngle = .diagonally
+        vc.samuraiTransition.zan = .diagonally
         present(vc, animated: true, completion: nil)
     }
 

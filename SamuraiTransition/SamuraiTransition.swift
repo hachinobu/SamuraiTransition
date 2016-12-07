@@ -12,7 +12,7 @@ public class SamuraiTransition: NSObject {
 
     public var duration: TimeInterval = 0.33
     public var presenting = true
-    public var zanAngle = Zan.horizontal
+    public var zan = Zan.horizontal
     public var isAffineTransform: Bool = true
     public var zanPoint: CGPoint?
     public var zanLineColor = UIColor.black
@@ -71,7 +71,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         let zanTargetView = presenting ? fromView.snapshotView(afterScreenUpdates: false)! : toView.snapshotView(afterScreenUpdates: true)!
         let point = zanPoint ?? containerView.center
         
-        let samuraiConfig = zanAngle.samuraiConfig(containerFrame: containerFrame, zanPoint: point, width: zanLineWidth, color: zanLineColor)
+        let samuraiConfig = zan.samuraiConfig(containerFrame: containerFrame, zanPoint: point, width: zanLineWidth, color: zanLineColor)
         let zanViews = samuraiConfig.zanViewConfigList.map { zanTargetView.resizableSnapshotView(from: $0.insideFrame, afterScreenUpdates: false, withCapInsets: .zero)! }
         
         zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
