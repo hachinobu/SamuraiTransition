@@ -14,7 +14,7 @@ open class SamuraiViewController: UIViewController {
         let transition = SamuraiTransition()
         transition.duration = 0.33
         transition.isAffineTransform = true
-        transition.zanAngle = .horizontal
+        transition.zan = .horizontal
         transition.zanLineColor = .black
         return transition
     }()

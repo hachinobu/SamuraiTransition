@@ -1,5 +1,5 @@
 //
-//  DiagonallyZanAngleConfig.swift
+//  DiagonallyZanConfig.swift
 //  SamuraiTransition
 //
 //  Created by Nishinobu.Takahiro on 2016/12/07.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DiagonallyZanAngleConfig: OneLineZanProtocol, SamuraiConfigProtocol {
+class DiagonallyZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
@@ -37,7 +37,7 @@ class DiagonallyZanAngleConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     
 }
 
-extension DiagonallyZanAngleConfig {
+extension DiagonallyZanConfig {
     
     fileprivate func zanPointBottomX() -> CGFloat {
         
