@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SamuraiTransition"
-  s.version      = "0.0.1"
+  s.version      = "0.1"
   s.summary      = "SamuraiTransiton is a ViewController transition framework in Swift."
   s.homepage     = "https://github.com/hachinobu/SamuraiTransition"
 
