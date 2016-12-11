@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "侍"
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,8 +23,10 @@ class ViewController: UIViewController {
     
     @IBAction func horizontalZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        navigationController?.delegate = vc.samuraiTransition
         vc.samuraiTransition.zan = .horizontal
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
+//        navigationController?.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func verticalZan(_ sender: Any) {
