@@ -40,5 +40,19 @@ class ViewController: UIViewController {
         vc.samuraiTransition.zan = .diagonally
         present(vc, animated: true, completion: nil)
     }
+    
+    @IBAction func crossZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zan = .cross
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func xZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zan = .x
+        present(vc, animated: true, completion: nil)
+    }
+    
+    
 
 }
