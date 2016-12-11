@@ -30,7 +30,7 @@ public class SamuraiTransition: NSObject {
     }
     
     fileprivate var toView: UIView {
-        return toViewController.view
+        return transitionContext.view(forKey: .to)!
     }
     
     fileprivate var fromViewController: UIViewController {
@@ -38,7 +38,7 @@ public class SamuraiTransition: NSObject {
     }
     
     fileprivate var fromView: UIView {
-        return fromViewController.view
+        return transitionContext.view(forKey: .from)!
     }
     
     fileprivate let coverView: UIView = {
@@ -69,8 +69,9 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         containerView = transitionContext.containerView
         
         let zanTargetView = presenting ? fromView : toView
-        let point = zanPoint ?? containerView.center
+        containerView.addSubview(zanTargetView)
         
+        let point = zanPoint ?? containerView.center
         let samuraiConfig = zan.samuraiConfig(containerFrame: containerFrame, zanPoint: point, width: zanLineWidth, color: zanLineColor)
         let zanViews = samuraiConfig.zanViewConfigList.map { zanTargetView.snapshotView(rect: $0.insideFrame, afterScreenUpdate: !self.presenting)! }
         
@@ -178,3 +179,11 @@ extension SamuraiTransition: UIViewControllerTransitioningDelegate {
     
 }
 
+extension SamuraiTransition: UINavigationControllerDelegate {
+    
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.presenting = operation == .push
+        return self
+    }
+    
+}
