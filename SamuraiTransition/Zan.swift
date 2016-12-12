@@ -14,6 +14,7 @@ public enum Zan {
     case vertical
     case diagonally
     case cross
+    case x
     
     func samuraiConfig(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor) -> SamuraiConfigProtocol {
         
@@ -29,6 +30,9 @@ public enum Zan {
             
         case .cross:
             return CrossZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            
+        case .x:
+            return XZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
         }
         
     }
