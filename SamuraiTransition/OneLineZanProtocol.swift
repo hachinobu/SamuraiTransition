@@ -13,6 +13,8 @@ public protocol OneLineZanProtocol {
     func oneSideBezierPath(containerFrame: CGRect, zanPoint: CGPoint, bottomX: CGFloat) -> UIBezierPath
     func otherSideBezierPath(containerFrame: CGRect, zanPoint: CGPoint, bottomX: CGFloat) -> UIBezierPath
     func zanLineLayer(from start: CGPoint, end: CGPoint, width: CGFloat, color: UIColor) -> CAShapeLayer
+    func calculateBottomLeftX(containerFrame: CGRect, zanPoint: CGPoint) -> CGFloat
+    func calculateBottomRightX(containerFrame: CGRect, zanPoint: CGPoint) -> CGFloat
     
 }
 
@@ -56,6 +58,31 @@ public extension OneLineZanProtocol {
         zanLineLayer.lineWidth = width
         return zanLineLayer
         
+    }
+    
+    func calculateBottomLeftX(containerFrame: CGRect, zanPoint: CGPoint) -> CGFloat {
+        
+        let ratio = calculateRatio(containerFrame: containerFrame, zanPoint: zanPoint)
+        let width = (containerFrame.maxX - zanPoint.x) * ratio
+        let bottomX = containerFrame.maxX - width
+        
+        return bottomX
+    }
+    
+    func calculateBottomRightX(containerFrame: CGRect, zanPoint: CGPoint) -> CGFloat {
+        
+        let ratio = calculateRatio(containerFrame: containerFrame, zanPoint: zanPoint)
+        let bottomX = zanPoint.x * ratio
+        
+        return bottomX
+    }
+    
+    private func calculateRatio(containerFrame: CGRect, zanPoint: CGPoint) -> CGFloat {
+        let ratio = containerFrame.maxY / zanPoint.y
+        if ratio.isInfinite {
+            fatalError("zanPosition.y is not 0. It will be infinite.")
+        }
+        return ratio
     }
     
 }
