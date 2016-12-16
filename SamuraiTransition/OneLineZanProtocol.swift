@@ -48,10 +48,17 @@ public extension OneLineZanProtocol {
     
     func zanLineLayer(from start: CGPoint, end: CGPoint, width: CGFloat, color: UIColor) -> CAShapeLayer {
         
-        let zanLineLayer = CAShapeLayer()
         let path = UIBezierPath()
         path.move(to: start)
         path.addLine(to: end)
+        let lineLayer = zanLineLayer(from: path, width: width, color: color)
+        return lineLayer
+        
+    }
+    
+    func zanLineLayer(from path: UIBezierPath, width: CGFloat, color: UIColor) -> CAShapeLayer {
+        
+        let zanLineLayer = CAShapeLayer()
         zanLineLayer.path = path.cgPath
         zanLineLayer.fillColor = nil
         zanLineLayer.strokeColor = color.cgColor

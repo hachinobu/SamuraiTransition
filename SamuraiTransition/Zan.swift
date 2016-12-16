@@ -15,6 +15,7 @@ public enum Zan {
     case diagonally
     case cross
     case x
+    case jagged(width: CGFloat)
     
     func samuraiConfig(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor) -> SamuraiConfigProtocol {
         
@@ -33,6 +34,13 @@ public enum Zan {
             
         case .x:
             return XZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            
+        case let .jagged(width) where width > 0.0:
+            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color, jaggedWidth: width)
+            
+        case .jagged:
+            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+        
         }
         
     }
