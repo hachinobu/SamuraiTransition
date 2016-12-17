@@ -99,5 +99,11 @@ class ViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func circleZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zan = .circle(radius: 50.0)
+        vc.samuraiTransition.zanPoint = zanPoint
+        present(vc, animated: true, completion: nil)
+    }
 
 }

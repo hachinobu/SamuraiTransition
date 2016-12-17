@@ -13,10 +13,12 @@ struct ZanViewConfig: ZanViewConfigProtocol {
     let insideFrame: CGRect
     let outSideFrame: CGRect
     let mask: CAShapeLayer?
+    let isAlphaAnimation: Bool
     
-    init(insideFrame: CGRect, outSideFrame: CGRect, mask: CAShapeLayer? = nil) {
+    init(insideFrame: CGRect, outSideFrame: CGRect, isAlphaAnimation: Bool = false, mask: CAShapeLayer? = nil) {
         self.insideFrame = insideFrame
         self.outSideFrame = outSideFrame
+        self.isAlphaAnimation = isAlphaAnimation
         self.mask = mask
     }
     
