@@ -17,29 +17,29 @@ public enum Zan {
     case x
     case jagged(width: CGFloat)
     
-    func samuraiConfig(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor) -> SamuraiConfigProtocol {
+    func samuraiConfig(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, color: UIColor) -> SamuraiConfigProtocol {
         
         switch self {
         case .horizontal:
-            return HorizontalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return HorizontalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
             
         case .vertical:
-            return VerticalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return VerticalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
             
         case .diagonally:
-            return DiagonallyZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return DiagonallyZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
             
         case .cross:
-            return CrossZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return CrossZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
             
         case .x:
-            return XZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return XZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
             
-        case let .jagged(width) where width > 0.0:
-            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color, jaggedWidth: width)
+        case let .jagged(jaggedWidth) where jaggedWidth > 0.0:
+            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color, jaggedWidth: jaggedWidth)
             
         case .jagged:
-            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: width, color: color)
+            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
         
         }
         
