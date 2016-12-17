@@ -56,12 +56,12 @@ class JaggedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
         return [oneSideConfig, otherSideConfig]
     }()
     
-    init(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor, jaggedWidth: CGFloat = 4.0) {
+    init(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor, jaggedWidth: CGFloat) {
         self.containerFrame = containerFrame
         self.zanPoint = zanPoint
         self.width = width
         self.color = color
-        self.jaggedWidth = jaggedWidth
+        self.jaggedWidth = jaggedWidth > 0.0 ? jaggedWidth : 4.0
         self.leftAreaOffsetSize = self.containerFrame.size
         self.rightAreaOffsetSize = self.containerFrame.size
     }
