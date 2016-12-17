@@ -36,11 +36,8 @@ public enum Zan {
         case .x:
             return XZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
             
-        case let .jagged(jaggedWidth) where jaggedWidth > 0.0:
+        case let .jagged(jaggedWidth):
             return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color, jaggedWidth: jaggedWidth)
-            
-        case .jagged:
-            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
             
         case let .circle(radius):
             return CircleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color, radius: radius)
