@@ -12,6 +12,7 @@ public protocol ZanViewConfigProtocol {
     
     var insideFrame: CGRect { get }
     var outSideFrame: CGRect { get }
+    var isAlphaAnimation: Bool { get }
     var mask: CAShapeLayer? { get }
     
 }

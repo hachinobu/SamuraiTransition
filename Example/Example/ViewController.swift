@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     
     @IBAction func verticalZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
-        vc.samuraiTransition.zan = .vertical
+        vc.samuraiTransition.zan = .circle(radius: 5.0)
         vc.samuraiTransition.zanPoint = zanPoint
         present(vc, animated: true, completion: nil)
     }

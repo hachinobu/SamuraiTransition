@@ -97,7 +97,10 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                 samuraiConfig.lineLayers.forEach { $0.removeFromSuperlayer() }
                 UIView.animate(withDuration: self.duration - self.zanLineDuration, animations: {
                     
-                    zip(zanViews, samuraiConfig.zanViewConfigList).forEach { $0.0.frame = $0.1.outSideFrame }
+                    zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
+                        view.frame = config.outSideFrame
+                        view.alpha = config.isAlphaAnimation ? 0.0 : 1.0
+                    }
                     self.toView.alpha = 1.0
                     self.toView.transform = CGAffineTransform.identity
                     
