@@ -105,5 +105,13 @@ class ViewController: UIViewController {
         vc.samuraiTransition.zanPoint = zanPoint
         present(vc, animated: true, completion: nil)
     }
+    
+    @IBAction func rectangleZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zan = .rectangle(width: 100.0, height: 100.0, cornerRadius: 5.0)
+        vc.samuraiTransition.zanPoint = zanPoint
+        present(vc, animated: true, completion: nil)
+    }
+    
 
 }
