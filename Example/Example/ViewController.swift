@@ -113,5 +113,13 @@ class ViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func triangleZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zan = .triangle(oneSide: 200.0)
+        vc.samuraiTransition.zanPoint = zanPoint
+        present(vc, animated: true, completion: nil)
+    }
+    
+    
 
 }

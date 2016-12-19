@@ -14,6 +14,7 @@
 		C27839E71DF58ECF004B1E0C /* ZanViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */; };
 		C2892D891DFEAE5C007FE39E /* XZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2892D881DFEAE5C007FE39E /* XZanConfig.swift */; };
 		C29236721E03D4AD00A04FEE /* JaggedZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29236711E03D4AD00A04FEE /* JaggedZanConfig.swift */; };
+		C29236751E07F80D00A04FEE /* TriangleZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29236741E07F80D00A04FEE /* TriangleZanConfig.swift */; };
 		C2E5F6DE1DF806A30012CFE2 /* ZanViewConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6DD1DF806A30012CFE2 /* ZanViewConfigProtocol.swift */; };
 		C2E5F6E01DF80D730012CFE2 /* SamuraiConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6DF1DF80D730012CFE2 /* SamuraiConfigProtocol.swift */; };
 		C2E5F6E61DF8239F0012CFE2 /* OneLineZanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6E51DF8239F0012CFE2 /* OneLineZanProtocol.swift */; };
@@ -34,6 +35,7 @@
 		C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanViewConfig.swift; sourceTree = "<group>"; };
 		C2892D881DFEAE5C007FE39E /* XZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZanConfig.swift; sourceTree = "<group>"; };
 		C29236711E03D4AD00A04FEE /* JaggedZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaggedZanConfig.swift; sourceTree = "<group>"; };
+		C29236741E07F80D00A04FEE /* TriangleZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleZanConfig.swift; sourceTree = "<group>"; };
 		C2E5F6DD1DF806A30012CFE2 /* ZanViewConfigProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanViewConfigProtocol.swift; sourceTree = "<group>"; };
 		C2E5F6DF1DF80D730012CFE2 /* SamuraiConfigProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamuraiConfigProtocol.swift; sourceTree = "<group>"; };
 		C2E5F6E51DF8239F0012CFE2 /* OneLineZanProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneLineZanProtocol.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				C29236711E03D4AD00A04FEE /* JaggedZanConfig.swift */,
 				AD5B398B1E0438F2004C56A2 /* CircleZanConfig.swift */,
 				AD5B398F1E06C341004C56A2 /* RectangleZanConfig.swift */,
+				C29236741E07F80D00A04FEE /* TriangleZanConfig.swift */,
 				C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */,
 				C2E5F6DD1DF806A30012CFE2 /* ZanViewConfigProtocol.swift */,
 				C2E5F6DF1DF80D730012CFE2 /* SamuraiConfigProtocol.swift */,
@@ -184,6 +187,7 @@
 				C2F716861DE959FF00480CAB /* Zan.swift in Sources */,
 				C2E5F6DE1DF806A30012CFE2 /* ZanViewConfigProtocol.swift in Sources */,
 				AD5B398C1E0438F2004C56A2 /* CircleZanConfig.swift in Sources */,
+				C29236751E07F80D00A04FEE /* TriangleZanConfig.swift in Sources */,
 				C2E5F6EA1DF828830012CFE2 /* DiagonallyZanConfig.swift in Sources */,
 				ADDC02641DFD332A009EEC45 /* CrossZanConfig.swift in Sources */,
 				C2892D891DFEAE5C007FE39E /* XZanConfig.swift in Sources */,

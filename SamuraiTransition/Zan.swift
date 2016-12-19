@@ -18,6 +18,7 @@ public enum Zan {
     case jagged(width: CGFloat)
     case circle(radius: CGFloat)
     case rectangle(width: CGFloat, height: CGFloat, cornerRadius: CGFloat)
+    case triangle(oneSide: CGFloat)
     
     func samuraiConfig(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, color: UIColor) -> SamuraiConfigProtocol {
         
@@ -45,6 +46,9 @@ public enum Zan {
             
         case let .rectangle(width, height, cornerRadius):
             return RectangleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: color, rectangleWidth: width, rectangleHeight: height, cornerRadius: cornerRadius)
+            
+        case let .triangle(oneSide):
+            return TriangleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: color, oneSide: oneSide)
         }
         
     }
