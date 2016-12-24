@@ -12,14 +12,14 @@ class XZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
-    let width: CGFloat
-    let color: UIColor
+    let lineWidth: CGFloat
+    let lineColor: UIColor
     
     //conform SamuraiConfigProtocol
     lazy var lineLayers: [CAShapeLayer] = {
         
-        let oneCrossLineLayer = self.zanLineLayer(from: CGPoint(x: self.containerFrame.maxX, y: 0.0), end: CGPoint(x: self.calculateBottomLeftX(containerFrame: self.containerFrame, zanPoint: self.zanPoint), y: self.containerFrame.maxY), width: self.width, color: self.color)
-        let otherCrossLineLayer = self.zanLineLayer(from: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: self.calculateBottomRightX(containerFrame: self.containerFrame, zanPoint: self.zanPoint), y: self.containerFrame.maxY), width: self.width, color: self.color)
+        let oneCrossLineLayer = self.zanLineLayer(from: CGPoint(x: self.containerFrame.maxX, y: 0.0), end: CGPoint(x: self.calculateBottomLeftX(containerFrame: self.containerFrame, zanPoint: self.zanPoint), y: self.containerFrame.maxY), width: self.lineWidth, color: self.lineColor)
+        let otherCrossLineLayer = self.zanLineLayer(from: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: self.calculateBottomRightX(containerFrame: self.containerFrame, zanPoint: self.zanPoint), y: self.containerFrame.maxY), width: self.lineWidth, color: self.lineColor)
         
         return [oneCrossLineLayer, otherCrossLineLayer]
     }()
@@ -36,11 +36,11 @@ class XZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
         
     }()
     
-    init(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor) {
+    init(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, color: UIColor) {
         self.containerFrame = containerFrame
         self.zanPoint = zanPoint
-        self.width = width
-        self.color = color
+        self.lineWidth = lineWidth
+        self.lineColor = color
     }
     
 }

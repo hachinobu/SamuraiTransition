@@ -20,35 +20,35 @@ public enum Zan {
     case rectangle(width: CGFloat, height: CGFloat, cornerRadius: CGFloat)
     case triangle(oneSide: CGFloat)
     
-    func samuraiConfig(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, color: UIColor) -> SamuraiConfigProtocol {
+    func samuraiConfig(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, lineColor: UIColor) -> SamuraiConfigProtocol {
         
         switch self {
         case .horizontal:
-            return HorizontalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
+            return HorizontalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor)
             
         case .vertical:
-            return VerticalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
+            return VerticalZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor)
             
         case .diagonally:
-            return DiagonallyZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
+            return DiagonallyZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor)
             
         case .cross:
-            return CrossZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
+            return CrossZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor)
             
         case .x:
-            return XZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color)
+            return XZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, color: lineColor)
             
         case let .jagged(jaggedWidth):
-            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color, jaggedWidth: jaggedWidth)
+            return JaggedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor, jaggedWidth: jaggedWidth)
             
         case let .circle(radius):
-            return CircleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, width: lineWidth, color: color, radius: radius)
+            return CircleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor, radius: radius)
             
         case let .rectangle(width, height, cornerRadius):
-            return RectangleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: color, rectangleWidth: width, rectangleHeight: height, cornerRadius: cornerRadius)
+            return RectangleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor, rectangleWidth: width, rectangleHeight: height, cornerRadius: cornerRadius)
             
         case let .triangle(oneSide):
-            return TriangleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: color, oneSide: oneSide)
+            return TriangleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor, oneSide: oneSide)
         }
         
     }
