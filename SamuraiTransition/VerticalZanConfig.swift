@@ -12,12 +12,12 @@ class VerticalZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
-    let width: CGFloat
-    let color: UIColor
+    let lineWidth: CGFloat
+    let lineColor: UIColor
     
     //conform SamuraiConfigProtocol
     lazy var lineLayers: [CAShapeLayer] = {
-        let lineLayer = self.zanLineLayer(from: CGPoint(x: self.zanPoint.x, y: self.containerFrame.minY), end: CGPoint(x: self.zanPoint.x, y: self.containerFrame.maxY), width: self.width, color: self.color)
+        let lineLayer = self.zanLineLayer(from: CGPoint(x: self.zanPoint.x, y: self.containerFrame.minY), end: CGPoint(x: self.zanPoint.x, y: self.containerFrame.maxY), width: self.lineWidth, color: self.lineColor)
         return [lineLayer]
     }()
     
@@ -32,11 +32,11 @@ class VerticalZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
         return [oneSideConfig, otherSideConfig]
     }()
     
-    init(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor) {
+    init(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, lineColor: UIColor) {
         self.containerFrame = containerFrame
         self.zanPoint = zanPoint
-        self.width = width
-        self.color = color
+        self.lineWidth = lineWidth
+        self.lineColor = lineColor
     }
     
 }

@@ -12,14 +12,14 @@ class CircleZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
-    let width: CGFloat
-    let color: UIColor
+    let lineWidth: CGFloat
+    let lineColor: UIColor
     var radius: CGFloat
     
     //conform SamuraiConfigProtocol
     lazy var lineLayers: [CAShapeLayer] = {
         let path = self.circleAreaPath()
-        let lineLayer = self.zanLineLayer(from: path, width: self.width, color: self.color)
+        let lineLayer = self.zanLineLayer(from: path, width: self.lineWidth, color: self.lineColor)
         return [lineLayer]
     }()
     
@@ -30,11 +30,11 @@ class CircleZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
         return [oneSideConfig, otherSideConfig]
     }()
     
-    init(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor, radius: CGFloat) {
+    init(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, lineColor: UIColor, radius: CGFloat) {
         self.containerFrame = containerFrame
         self.zanPoint = zanPoint
-        self.width = width
-        self.color = color
+        self.lineWidth = lineWidth
+        self.lineColor = lineColor
         self.radius = fabs(radius)
     }
     

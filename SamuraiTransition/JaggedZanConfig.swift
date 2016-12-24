@@ -12,8 +12,8 @@ class JaggedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
-    let width: CGFloat
-    let color: UIColor
+    let lineWidth: CGFloat
+    let lineColor: UIColor
     let jaggedWidth: CGFloat
     
     fileprivate lazy var jaggedRatio: CGFloat = {
@@ -30,7 +30,7 @@ class JaggedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     }()
     
     fileprivate lazy var jaggedStartPoint: CGPoint = {
-        return CGPoint(x: self.containerFrame.maxX - self.width, y: self.containerFrame.minY)
+        return CGPoint(x: self.containerFrame.maxX - self.lineWidth, y: self.containerFrame.minY)
     }()
     
     fileprivate var leftAreaOffsetSize: CGSize
@@ -39,7 +39,7 @@ class JaggedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     //conform SamuraiConfigProtocol
     lazy var lineLayers: [CAShapeLayer] = {
         let path = self.jaggedPath()
-        let lineLayer = self.zanLineLayer(from: path, width: self.width, color: self.color)
+        let lineLayer = self.zanLineLayer(from: path, width: self.lineWidth, color: self.lineColor)
         
         return [lineLayer]
     }()
@@ -56,11 +56,11 @@ class JaggedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
         return [oneSideConfig, otherSideConfig]
     }()
     
-    init(containerFrame: CGRect, zanPoint: CGPoint, width: CGFloat, color: UIColor, jaggedWidth: CGFloat) {
+    init(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, lineColor: UIColor, jaggedWidth: CGFloat) {
         self.containerFrame = containerFrame
         self.zanPoint = zanPoint
-        self.width = width
-        self.color = color
+        self.lineWidth = lineWidth
+        self.lineColor = lineColor
         self.jaggedWidth = jaggedWidth > 0.0 ? jaggedWidth : 4.0
         self.leftAreaOffsetSize = self.containerFrame.size
         self.rightAreaOffsetSize = self.containerFrame.size

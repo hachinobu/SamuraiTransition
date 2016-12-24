@@ -72,7 +72,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         containerView.addSubview(zanTargetView)
         
         let point = zanPoint ?? containerView.center
-        let samuraiConfig = zan.samuraiConfig(containerFrame: containerFrame, zanPoint: point, lineWidth: zanLineWidth, color: zanLineColor)
+        let samuraiConfig = zan.samuraiConfig(containerFrame: containerFrame, zanPoint: point, lineWidth: zanLineWidth, lineColor: zanLineColor)
         let zanViews = samuraiConfig.zanViewConfigList.map { zanTargetView.snapshotView(rect: $0.insideFrame, afterScreenUpdate: !self.presenting)! }
         
         coverView.frame = containerFrame
