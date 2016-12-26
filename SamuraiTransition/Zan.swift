@@ -19,6 +19,7 @@ public enum Zan {
     case circle(radius: CGFloat)
     case rectangle(width: CGFloat, height: CGFloat, cornerRadius: CGFloat)
     case triangle(oneSide: CGFloat)
+    case shredded(isHorizontal: Bool, shreddedCount: Int)
     
     func samuraiConfig(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, lineColor: UIColor) -> SamuraiConfigProtocol {
         
@@ -49,6 +50,10 @@ public enum Zan {
             
         case let .triangle(oneSide):
             return TriangleZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor, oneSide: oneSide)
+            
+        case let .shredded(isHorizontal, shreddedCount):
+            return ShreddedZanConfig(containerFrame: containerFrame, zanPoint: zanPoint, lineWidth: lineWidth, lineColor: lineColor, isHorizontal: isHorizontal, shreddedCount: shreddedCount)
+            
         }
         
     }
