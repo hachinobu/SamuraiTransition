@@ -53,14 +53,6 @@ extension RectangleZanConfig {
         return path
     }
     
-    fileprivate func circleAreaPath() -> UIBezierPath {
-        let path = UIBezierPath()
-        let startAngle = -CGFloat(M_PI_2)
-        let endAngle = CGFloat(M_PI) + CGFloat(M_PI_2)
-        path.addArc(withCenter: zanPoint, radius: 1, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        return path
-    }
-    
     fileprivate func zanMaskLayers() -> (oneSide: CAShapeLayer, otherSide: CAShapeLayer) {
         
         let oneSide = CAShapeLayer()
