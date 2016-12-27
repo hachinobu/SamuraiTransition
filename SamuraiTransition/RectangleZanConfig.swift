@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RectangleZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
+class RectangleZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
@@ -27,8 +27,8 @@ class RectangleZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     
     lazy var zanViewConfigList: [ZanViewConfigProtocol] = {
         let maskLayers = self.zanMaskLayers()
-        let oneSideConfig = ZanViewConfig(insideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: 0.0, dy: self.containerFrame.maxY), isAlphaAnimation: true, mask: maskLayers.oneSide)
-        let otherSideConfig = ZanViewConfig(insideFrame: self.containerFrame, outSideFrame: self.containerFrame, mask: maskLayers.otherSide)
+        let oneSideConfig = ZanViewConfig(inSideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: 0.0, dy: self.containerFrame.maxY), isAlphaAnimation: true, mask: maskLayers.oneSide)
+        let otherSideConfig = ZanViewConfig(inSideFrame: self.containerFrame, outSideFrame: self.containerFrame, mask: maskLayers.otherSide)
         return [oneSideConfig, otherSideConfig]
     }()
     

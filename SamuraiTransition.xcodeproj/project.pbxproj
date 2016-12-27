@@ -18,7 +18,7 @@
 		C29236751E07F80D00A04FEE /* TriangleZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29236741E07F80D00A04FEE /* TriangleZanConfig.swift */; };
 		C2E5F6DE1DF806A30012CFE2 /* ZanViewConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6DD1DF806A30012CFE2 /* ZanViewConfigProtocol.swift */; };
 		C2E5F6E01DF80D730012CFE2 /* SamuraiConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6DF1DF80D730012CFE2 /* SamuraiConfigProtocol.swift */; };
-		C2E5F6E61DF8239F0012CFE2 /* OneLineZanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6E51DF8239F0012CFE2 /* OneLineZanProtocol.swift */; };
+		C2E5F6E61DF8239F0012CFE2 /* ZanLineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6E51DF8239F0012CFE2 /* ZanLineProtocol.swift */; };
 		C2E5F6E81DF825310012CFE2 /* VerticalZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6E71DF825310012CFE2 /* VerticalZanConfig.swift */; };
 		C2E5F6EA1DF828830012CFE2 /* DiagonallyZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6E91DF828830012CFE2 /* DiagonallyZanConfig.swift */; };
 		C2E5F6EC1DF82AC40012CFE2 /* HorizontalZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F6EB1DF82AC40012CFE2 /* HorizontalZanConfig.swift */; };
@@ -40,7 +40,7 @@
 		C29236741E07F80D00A04FEE /* TriangleZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleZanConfig.swift; sourceTree = "<group>"; };
 		C2E5F6DD1DF806A30012CFE2 /* ZanViewConfigProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanViewConfigProtocol.swift; sourceTree = "<group>"; };
 		C2E5F6DF1DF80D730012CFE2 /* SamuraiConfigProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamuraiConfigProtocol.swift; sourceTree = "<group>"; };
-		C2E5F6E51DF8239F0012CFE2 /* OneLineZanProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneLineZanProtocol.swift; sourceTree = "<group>"; };
+		C2E5F6E51DF8239F0012CFE2 /* ZanLineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanLineProtocol.swift; sourceTree = "<group>"; };
 		C2E5F6E71DF825310012CFE2 /* VerticalZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalZanConfig.swift; sourceTree = "<group>"; };
 		C2E5F6E91DF828830012CFE2 /* DiagonallyZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagonallyZanConfig.swift; sourceTree = "<group>"; };
 		C2E5F6EB1DF82AC40012CFE2 /* HorizontalZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalZanConfig.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 				C2F716541DE9565000480CAB /* SamuraiTransition.h */,
 				C2F716551DE9565000480CAB /* Info.plist */,
 				C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */,
-				C2E5F6E51DF8239F0012CFE2 /* OneLineZanProtocol.swift */,
+				C2E5F6E51DF8239F0012CFE2 /* ZanLineProtocol.swift */,
 				C2F716851DE959FF00480CAB /* Zan.swift */,
 				C2E5F6EB1DF82AC40012CFE2 /* HorizontalZanConfig.swift */,
 				C2E5F6E71DF825310012CFE2 /* VerticalZanConfig.swift */,
@@ -197,7 +197,7 @@
 				C2892D891DFEAE5C007FE39E /* XZanConfig.swift in Sources */,
 				AD5B39901E06C341004C56A2 /* RectangleZanConfig.swift in Sources */,
 				C2E5F6EC1DF82AC40012CFE2 /* HorizontalZanConfig.swift in Sources */,
-				C2E5F6E61DF8239F0012CFE2 /* OneLineZanProtocol.swift in Sources */,
+				C2E5F6E61DF8239F0012CFE2 /* ZanLineProtocol.swift in Sources */,
 				C2E5F6E81DF825310012CFE2 /* VerticalZanConfig.swift in Sources */,
 				C2F716881DE95ABC00480CAB /* SamuraiTransition.swift in Sources */,
 				C2F716921DF2665C00480CAB /* SamuraiViewController.swift in Sources */,

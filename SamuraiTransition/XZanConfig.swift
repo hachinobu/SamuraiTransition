@@ -8,7 +8,7 @@
 
 import Foundation
 
-class XZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
+class XZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
@@ -18,8 +18,8 @@ class XZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     //conform SamuraiConfigProtocol
     lazy var lineLayers: [CAShapeLayer] = {
         
-        let oneCrossLineLayer = self.zanLineLayer(from: CGPoint(x: self.containerFrame.maxX, y: 0.0), end: CGPoint(x: self.calculateBottomLeftX(containerFrame: self.containerFrame, zanPoint: self.zanPoint), y: self.containerFrame.maxY), width: self.lineWidth, color: self.lineColor)
-        let otherCrossLineLayer = self.zanLineLayer(from: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: self.calculateBottomRightX(containerFrame: self.containerFrame, zanPoint: self.zanPoint), y: self.containerFrame.maxY), width: self.lineWidth, color: self.lineColor)
+        let oneCrossLineLayer = self.zanLineLayer(from: CGPoint(x: self.containerFrame.maxX, y: 0.0), end: CGPoint(x: self.calculateTopRightToBottomLeftX(containerFrame: self.containerFrame, zanPoint: self.zanPoint), y: self.containerFrame.maxY), width: self.lineWidth, color: self.lineColor)
+        let otherCrossLineLayer = self.zanLineLayer(from: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: self.calculateTopLeftToBottomRightX(containerFrame: self.containerFrame, zanPoint: self.zanPoint), y: self.containerFrame.maxY), width: self.lineWidth, color: self.lineColor)
         
         return [oneCrossLineLayer, otherCrossLineLayer]
     }()
@@ -27,10 +27,10 @@ class XZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     lazy var zanViewConfigList: [ZanViewConfigProtocol] = {
         
         let xLayers = self.zanXMaskLayers()
-        let topViewConfig = ZanViewConfig(insideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: 0.0, dy: -self.zanPoint.y), mask: xLayers.top)
-        let leftViewConfig = ZanViewConfig(insideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: -self.zanPoint.x, dy: 0.0), mask: xLayers.left)
-        let bottomViewConfig = ZanViewConfig(insideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: 0.0, dy: (self.containerFrame.height - self.zanPoint.y)), mask: xLayers.bottom)
-        let rightViewConfig = ZanViewConfig(insideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: self.containerFrame.width - self.zanPoint.x, dy: 0.0), mask: xLayers.right)
+        let topViewConfig = ZanViewConfig(inSideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: 0.0, dy: -self.zanPoint.y), mask: xLayers.top)
+        let leftViewConfig = ZanViewConfig(inSideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: -self.zanPoint.x, dy: 0.0), mask: xLayers.left)
+        let bottomViewConfig = ZanViewConfig(inSideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: 0.0, dy: (self.containerFrame.height - self.zanPoint.y)), mask: xLayers.bottom)
+        let rightViewConfig = ZanViewConfig(inSideFrame: self.containerFrame, outSideFrame: self.containerFrame.offsetBy(dx: self.containerFrame.width - self.zanPoint.x, dy: 0.0), mask: xLayers.right)
         
         return [topViewConfig, leftViewConfig, bottomViewConfig, rightViewConfig]
         
@@ -53,8 +53,8 @@ extension XZanConfig {
         let topRightSideRightAnglePoint = CGPoint(x: containerFrame.maxX, y: containerFrame.minY)
         let bottomLeftSideRightAnglePoint = CGPoint(x: containerFrame.minX, y: containerFrame.maxY)
         let bottomRightSideRightAnglePoint = CGPoint(x: containerFrame.maxX, y: containerFrame.maxY)
-        let bottomLeftPoint = CGPoint(x: calculateBottomLeftX(containerFrame: containerFrame, zanPoint: zanPoint), y: containerFrame.maxY)
-        let bottomRightPoint = CGPoint(x: calculateBottomRightX(containerFrame: containerFrame, zanPoint: zanPoint), y: containerFrame.maxY)
+        let bottomLeftPoint = CGPoint(x: calculateTopRightToBottomLeftX(containerFrame: containerFrame, zanPoint: zanPoint), y: containerFrame.maxY)
+        let bottomRightPoint = CGPoint(x: calculateTopLeftToBottomRightX(containerFrame: containerFrame, zanPoint: zanPoint), y: containerFrame.maxY)
         
         let topAreaPath = triangleAreaPath(point1: topLeftSideRightAnglePoint, point2: zanPoint, point3: topRightSideRightAnglePoint)
         let leftAreaPath = rectangleAreaPath(point1: topLeftSideRightAnglePoint, point2: zanPoint, point3: bottomLeftPoint, point4: bottomLeftSideRightAnglePoint)
