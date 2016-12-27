@@ -120,6 +120,12 @@ class ViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func shreddedZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        navigationController?.delegate = vc.samuraiTransition
+        vc.samuraiTransition.zan = .shredded(isHorizontal: true, shreddedCount: 30)
+        present(vc, animated: true)
+    }
     
 
 }

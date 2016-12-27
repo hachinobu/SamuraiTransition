@@ -11,6 +11,7 @@
 		AD5B39901E06C341004C56A2 /* RectangleZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B398F1E06C341004C56A2 /* RectangleZanConfig.swift */; };
 		ADDC02611DF99FEC009EEC45 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC02601DF99FEC009EEC45 /* UIView+Extension.swift */; };
 		ADDC02641DFD332A009EEC45 /* CrossZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC02631DFD332A009EEC45 /* CrossZanConfig.swift */; };
+		C2576BFF1E111EC9003572C2 /* ShreddedZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2576BFE1E111EC9003572C2 /* ShreddedZanConfig.swift */; };
 		C27839E71DF58ECF004B1E0C /* ZanViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */; };
 		C2892D891DFEAE5C007FE39E /* XZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2892D881DFEAE5C007FE39E /* XZanConfig.swift */; };
 		C29236721E03D4AD00A04FEE /* JaggedZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29236711E03D4AD00A04FEE /* JaggedZanConfig.swift */; };
@@ -32,6 +33,7 @@
 		AD5B398F1E06C341004C56A2 /* RectangleZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleZanConfig.swift; sourceTree = "<group>"; };
 		ADDC02601DF99FEC009EEC45 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ADDC02631DFD332A009EEC45 /* CrossZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossZanConfig.swift; sourceTree = "<group>"; };
+		C2576BFE1E111EC9003572C2 /* ShreddedZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShreddedZanConfig.swift; sourceTree = "<group>"; };
 		C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanViewConfig.swift; sourceTree = "<group>"; };
 		C2892D881DFEAE5C007FE39E /* XZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZanConfig.swift; sourceTree = "<group>"; };
 		C29236711E03D4AD00A04FEE /* JaggedZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaggedZanConfig.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				AD5B398B1E0438F2004C56A2 /* CircleZanConfig.swift */,
 				AD5B398F1E06C341004C56A2 /* RectangleZanConfig.swift */,
 				C29236741E07F80D00A04FEE /* TriangleZanConfig.swift */,
+				C2576BFE1E111EC9003572C2 /* ShreddedZanConfig.swift */,
 				C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */,
 				C2E5F6DD1DF806A30012CFE2 /* ZanViewConfigProtocol.swift */,
 				C2E5F6DF1DF80D730012CFE2 /* SamuraiConfigProtocol.swift */,
@@ -189,6 +192,7 @@
 				AD5B398C1E0438F2004C56A2 /* CircleZanConfig.swift in Sources */,
 				C29236751E07F80D00A04FEE /* TriangleZanConfig.swift in Sources */,
 				C2E5F6EA1DF828830012CFE2 /* DiagonallyZanConfig.swift in Sources */,
+				C2576BFF1E111EC9003572C2 /* ShreddedZanConfig.swift in Sources */,
 				ADDC02641DFD332A009EEC45 /* CrossZanConfig.swift in Sources */,
 				C2892D891DFEAE5C007FE39E /* XZanConfig.swift in Sources */,
 				AD5B39901E06C341004C56A2 /* RectangleZanConfig.swift in Sources */,

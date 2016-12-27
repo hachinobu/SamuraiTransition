@@ -151,6 +151,14 @@
                                     <action selector="triangleZan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fKi-x3-ulj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zY7-Ba-N6h">
+                                <rect key="frame" x="100" y="616" width="92" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="shredded"/>
+                                <connections>
+                                    <action selector="shreddedZan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fuu-cI-JbZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -170,6 +178,8 @@
                             <constraint firstItem="Rbl-Ew-imT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="P1v-k5-RIN"/>
                             <constraint firstItem="pqv-bE-8qc" firstAttribute="centerY" secondItem="X32-j1-IjL" secondAttribute="centerY" id="Pei-Yp-Z4w"/>
                             <constraint firstItem="trP-hn-Blg" firstAttribute="leading" secondItem="j2q-mg-vRb" secondAttribute="trailing" constant="8" id="QII-4P-JOD"/>
+                            <constraint firstItem="zY7-Ba-N6h" firstAttribute="leading" secondItem="25s-vm-G9O" secondAttribute="trailing" constant="10" id="RcS-q9-X5G"/>
+                            <constraint firstItem="zY7-Ba-N6h" firstAttribute="top" secondItem="H6u-kC-ZR9" secondAttribute="bottom" constant="8" id="URz-AV-BMc"/>
                             <constraint firstItem="POQ-AA-l0e" firstAttribute="trailing" secondItem="zC0-FB-TSU" secondAttribute="trailing" id="X0P-5Q-80e"/>
                             <constraint firstItem="e0b-jL-2Sn" firstAttribute="top" secondItem="Rbl-Ew-imT" secondAttribute="bottom" constant="20" id="XSp-78-GAl"/>
                             <constraint firstItem="8jf-KK-D2U" firstAttribute="centerY" secondItem="e0b-jL-2Sn" secondAttribute="centerY" id="ZCY-x8-vzd"/>
