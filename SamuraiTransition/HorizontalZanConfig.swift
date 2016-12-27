@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HorizontalZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
+class HorizontalZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
@@ -26,8 +26,8 @@ class HorizontalZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
         let slice = divided.slice
         let remainder = divided.remainder
         
-        let oneSideConfig = ZanViewConfig(insideFrame: slice, outSideFrame: slice.offsetBy(dx: 0.0, dy: -slice.height))
-        let otherSideConfig = ZanViewConfig(insideFrame: remainder, outSideFrame: remainder.offsetBy(dx: 0.0, dy: remainder.height))
+        let oneSideConfig = ZanViewConfig(inSideFrame: slice, outSideFrame: slice.offsetBy(dx: 0.0, dy: -slice.height))
+        let otherSideConfig = ZanViewConfig(inSideFrame: remainder, outSideFrame: remainder.offsetBy(dx: 0.0, dy: remainder.height))
         
         return [oneSideConfig, otherSideConfig]
     }()

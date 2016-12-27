@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShreddedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
+class ShreddedZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
@@ -34,7 +34,7 @@ class ShreddedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
     
     lazy var zanViewConfigList: [ZanViewConfigProtocol] = {
         let infos = self.inOutSideFrames()
-        return infos.map { ZanViewConfig(insideFrame: $0.inSideFrame, outSideFrame: $0.outSideFrame) }
+        return infos.map { ZanViewConfig(inSideFrame: $0.inSideFrame, outSideFrame: $0.outSideFrame) }
     }()
     
     init(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, lineColor: UIColor, isHorizontal: Bool, shreddedCount: Int) {

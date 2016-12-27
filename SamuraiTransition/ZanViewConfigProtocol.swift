@@ -10,7 +10,7 @@ import Foundation
 
 public protocol ZanViewConfigProtocol {
     
-    var insideFrame: CGRect { get }
+    var inSideFrame: CGRect { get }
     var outSideFrame: CGRect { get }
     var isAlphaAnimation: Bool { get }
     var mask: CAShapeLayer? { get }
@@ -20,7 +20,7 @@ public protocol ZanViewConfigProtocol {
 extension ZanViewConfigProtocol {
     
     func viewFrame(isPresenting: Bool) -> CGRect {
-        return isPresenting ? insideFrame : outSideFrame
+        return isPresenting ? inSideFrame : outSideFrame
     }
     
 }

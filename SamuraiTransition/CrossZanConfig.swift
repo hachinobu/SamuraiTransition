@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CrossZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
+class CrossZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
@@ -29,10 +29,10 @@ class CrossZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
         let leftBottomRect = CGRect(x: leftTopRect.minX, y: leftTopRect.maxY, width: leftTopRect.width, height: self.containerFrame.height - leftTopRect.height)
         let rightBottomRect = CGRect(x: leftTopRect.maxX, y: rightTopRect.maxY, width: rightTopRect.width, height: leftBottomRect.height)
         
-        let leftTopConfig = ZanViewConfig(insideFrame: leftTopRect, outSideFrame: leftTopRect.offsetBy(dx: -leftTopRect.width, dy: -leftTopRect.height))
-        let rightTopConfig = ZanViewConfig(insideFrame: rightTopRect, outSideFrame: rightTopRect.offsetBy(dx: rightTopRect.width, dy: -rightTopRect.height))
-        let leftBottomConfig = ZanViewConfig(insideFrame: leftBottomRect, outSideFrame: leftBottomRect.offsetBy(dx: -leftBottomRect.width, dy: leftBottomRect.height))
-        let rightBottomConfig = ZanViewConfig(insideFrame: rightBottomRect, outSideFrame: rightBottomRect.offsetBy(dx: rightBottomRect.width, dy: rightBottomRect.height))
+        let leftTopConfig = ZanViewConfig(inSideFrame: leftTopRect, outSideFrame: leftTopRect.offsetBy(dx: -leftTopRect.width, dy: -leftTopRect.height))
+        let rightTopConfig = ZanViewConfig(inSideFrame: rightTopRect, outSideFrame: rightTopRect.offsetBy(dx: rightTopRect.width, dy: -rightTopRect.height))
+        let leftBottomConfig = ZanViewConfig(inSideFrame: leftBottomRect, outSideFrame: leftBottomRect.offsetBy(dx: -leftBottomRect.width, dy: leftBottomRect.height))
+        let rightBottomConfig = ZanViewConfig(inSideFrame: rightBottomRect, outSideFrame: rightBottomRect.offsetBy(dx: rightBottomRect.width, dy: rightBottomRect.height))
         
         return [leftTopConfig, rightTopConfig, leftBottomConfig, rightBottomConfig]
     }()

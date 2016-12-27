@@ -8,7 +8,7 @@
 
 import Foundation
 
-class JaggedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
+class JaggedZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
     
     let containerFrame: CGRect
     let zanPoint: CGPoint
@@ -50,8 +50,8 @@ class JaggedZanConfig: OneLineZanProtocol, SamuraiConfigProtocol {
         let right = self.containerFrame
         let maskLayer = self.zanMaskLayers()
         
-        let oneSideConfig = ZanViewConfig(insideFrame: left, outSideFrame: left.offsetBy(dx: -self.leftAreaOffsetSize.width, dy: -self.leftAreaOffsetSize.height), mask: maskLayer.leftAreaMask)
-        let otherSideConfig = ZanViewConfig(insideFrame: right, outSideFrame: right.offsetBy(dx: self.rightAreaOffsetSize.width, dy: self.rightAreaOffsetSize.height), mask: maskLayer.rightAreaMask)
+        let oneSideConfig = ZanViewConfig(inSideFrame: left, outSideFrame: left.offsetBy(dx: -self.leftAreaOffsetSize.width, dy: -self.leftAreaOffsetSize.height), mask: maskLayer.leftAreaMask)
+        let otherSideConfig = ZanViewConfig(inSideFrame: right, outSideFrame: right.offsetBy(dx: self.rightAreaOffsetSize.width, dy: self.rightAreaOffsetSize.height), mask: maskLayer.rightAreaMask)
         
         return [oneSideConfig, otherSideConfig]
     }()
