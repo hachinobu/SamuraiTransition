@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "侍"
+        title = "Samurai Transition"
         setupUI()
     }
 
