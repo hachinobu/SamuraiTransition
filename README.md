@@ -1,4 +1,5 @@
-# SamuraiTransition
+![SamuraiTransition](https://cloud.githubusercontent.com/assets/1317847/21515399/a0b30e80-cd12-11e6-9170-fb61c0143c17.png)
+
 
 SamuraiTransiton is a ViewController transition framework in Swift.
 
