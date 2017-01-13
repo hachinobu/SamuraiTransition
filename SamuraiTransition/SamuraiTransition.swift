@@ -17,6 +17,13 @@ public class SamuraiTransition: NSObject {
     public var zanPoint: CGPoint?
     public var zanLineColor = UIColor.black
     public var zanLineWidth: CGFloat = 1.0
+    public var operation: UINavigationControllerOperation! {
+        didSet {
+            popOperation = operation == .pop
+        }
+    }
+    
+    fileprivate var popOperation: Bool = false
     
     fileprivate weak var transitionContext: UIViewControllerContextTransitioning!
     fileprivate var containerView: UIView!
@@ -68,25 +75,26 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
         self.transitionContext = transitionContext
         containerView = transitionContext.containerView
         
-        let zanTargetView = presenting ? fromView : toView
-        containerView.addSubview(zanTargetView)
-        
-        let point = zanPoint ?? containerView.center
-        let samuraiConfig = zan.samuraiConfig(containerFrame: containerFrame, zanPoint: point, lineWidth: zanLineWidth, lineColor: zanLineColor)
-        let zanViews = samuraiConfig.zanViewConfigList.map { zanTargetView.snapshotView(rect: $0.inSideFrame, afterScreenUpdate: !self.presenting)! }
-        
         coverView.frame = containerFrame
         containerView.addSubview(coverView)
         
-        zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
-            containerView.addSubview(view)
-            view.frame = config.viewFrame(isPresenting: presenting)
-            view.layer.mask = config.mask
-        }
+        let point = zanPoint ?? containerView.center
+        let samuraiConfig = zan.samuraiConfig(containerFrame: containerFrame, zanPoint: point, lineWidth: zanLineWidth, lineColor: zanLineColor)
         
         if presenting {
             
-            containerView.insertSubview(toView, aboveSubview: coverView)
+            containerView.addSubview(toView)
+            
+            let zanViews = samuraiConfig.zanViewConfigList.map {
+                fromView.snapshotView(rect: $0.inSideFrame, afterScreenUpdate: false)!
+            }
+            
+            zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
+                containerView.addSubview(view)
+                view.frame = config.viewFrame(isPresenting: presenting)
+                view.layer.mask = config.mask
+            }
+            
             toView.alpha = 0.0
             if isAffineTransform {
                 toView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
@@ -123,10 +131,20 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             
         } else {
             
-            containerView.insertSubview(fromView, aboveSubview: coverView)
+            containerView.bringSubview(toFront: fromView)
             containerView.addSubview(toView)
-            toView.alpha = 0.0
             
+            let zanViews = samuraiConfig.zanViewConfigList.map {
+                toView.snapshotView(rect: $0.inSideFrame, afterScreenUpdate: !popOperation)!
+            }
+            
+            zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
+                containerView.addSubview(view)
+                view.frame = config.viewFrame(isPresenting: presenting)
+                view.layer.mask = config.mask
+            }
+            
+            toView.isHidden = true
             UIView.animate(withDuration: duration, animations: {
                 
                 self.fromView.alpha = 0.0
@@ -137,7 +155,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                 
             }, completion: { _ in
                 
-                self.toView.alpha = 1.0
+                self.toView.isHidden = false
                 self.fromView.removeFromSuperview()
                 self.coverView.removeFromSuperview()
                 zanViews.forEach { $0.removeFromSuperview() }
@@ -186,6 +204,7 @@ extension SamuraiTransition: UINavigationControllerDelegate {
     
     public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.presenting = operation == .push
+        self.operation = operation
         return self
     }
     
