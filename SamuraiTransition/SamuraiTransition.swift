@@ -85,8 +85,11 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             
             containerView.addSubview(toView)
             
-            let zanViews = samuraiConfig.zanViewConfigList.map {
-                fromView.snapshotView(rect: $0.inSideFrame, afterScreenUpdate: false)!
+            let zanViews: [UIView] = samuraiConfig.zanViewConfigList.map {
+                if Device.isSimulator {
+                    return fromView.snapshotView(rect: $0.inSideFrame, afterScreenUpdate: false)!
+                }
+                return fromView.resizableSnapshotView(from: $0.inSideFrame, afterScreenUpdates: false, withCapInsets: .zero)!
             }
             
             zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
@@ -134,8 +137,11 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             containerView.bringSubview(toFront: fromView)
             containerView.addSubview(toView)
             
-            let zanViews = samuraiConfig.zanViewConfigList.map {
-                toView.snapshotView(rect: $0.inSideFrame, afterScreenUpdate: !popOperation)!
+            let zanViews: [UIView] = samuraiConfig.zanViewConfigList.map {
+                if Device.isSimulator {
+                    return toView.snapshotView(rect: $0.inSideFrame, afterScreenUpdate: !popOperation)!
+                }
+                return toView.resizableSnapshotView(from: $0.inSideFrame, afterScreenUpdates: !popOperation, withCapInsets: .zero)!
             }
             
             zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
