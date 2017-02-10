@@ -17,7 +17,7 @@ class ShreddedZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
     let isHorizontal: Bool
     let shreddedCount: Int
     
-    let limitCount: Int = 50
+    private let limitCount: Int = 50
     
     lazy var oneSide: CGFloat = {
         if self.isHorizontal {
@@ -52,14 +52,15 @@ extension ShreddedZanConfig {
     
     fileprivate func shreddedLinePaths() -> [UIBezierPath] {
         
-        var paths: [UIBezierPath] = []
-        for i in 1...shreddedCount {
+        return (1...shreddedCount).map { count -> UIBezierPath in
             
-            let position = oneSide * CGFloat(i)
+            let position = oneSide * CGFloat(count)
             let path = UIBezierPath()
+            let isEven: Bool = count % 2 == 0
+            
             if isHorizontal {
                 
-                if i % 2 == 0 {
+                if isEven {
                     path.move(to: CGPoint(x: containerFrame.minX, y: position))
                     path.addLine(to: CGPoint(x: containerFrame.maxX, y: position))
                 } else {
@@ -69,7 +70,7 @@ extension ShreddedZanConfig {
                 
             } else {
                 
-                if i % 2 == 0 {
+                if isEven {
                     path.move(to: CGPoint(x: position, y: containerFrame.minY))
                     path.addLine(to: CGPoint(x: position, y: containerFrame.maxY))
                 } else {
@@ -79,38 +80,33 @@ extension ShreddedZanConfig {
                 
             }
             
-            paths.append(path)
-            
+            return path
         }
-        
-        return paths
         
     }
     
     fileprivate func inOutSideFrames() -> [(inSideFrame: CGRect, outSideFrame: CGRect)] {
         
-        var sideFrames: [(inSideFrame: CGRect, outSideFrame: CGRect)] = []
-        for i in 0..<shreddedCount {
+        return (0..<shreddedCount).map { count -> (inSideFrame: CGRect, outSideFrame: CGRect) in
             
-            let point = oneSide * CGFloat(i)
+            let point = oneSide * CGFloat(count)
             let inSideFrame: CGRect
             let outSideFrame: CGRect
+            let isEven: Bool = count % 2 == 0
             
             if isHorizontal {
                 inSideFrame = CGRect(x: containerFrame.minX, y: point, width: containerFrame.maxX, height: oneSide)
-                let outDistance = (i % 2 == 0) ? -(point + oneSide) : (containerFrame.maxY - point)
+                let outDistance = isEven ? -(point + oneSide) : (containerFrame.maxY - point)
                 outSideFrame = inSideFrame.offsetBy(dx: 0.0, dy: outDistance)
             } else {
                 inSideFrame = CGRect(x: point, y: containerFrame.minY, width: oneSide, height: containerFrame.maxY)
-                let outDistance = (i % 2 == 0) ? -(point + oneSide) : (containerFrame.maxX - point)
+                let outDistance = isEven ? -(point + oneSide) : (containerFrame.maxX - point)
                 outSideFrame = inSideFrame.offsetBy(dx: outDistance, dy: 0.0)
             }
             
-            sideFrames.append((inSideFrame: inSideFrame, outSideFrame: outSideFrame))
-            
+            return (inSideFrame, outSideFrame)
         }
         
-        return sideFrames
     }
     
 }
