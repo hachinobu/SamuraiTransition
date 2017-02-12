@@ -123,7 +123,7 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 
 #### [Carthage](https://github.com/Carthage/Carthage)
 
-- Insert `github "hachinobu/SamuraiTransition"
+- Insert `github "hachinobu/SamuraiTransition"`
 - Run `carthage update`.
 - Link your app with `SamuraiTransition.framework` in `Carthage/Build`.
 
