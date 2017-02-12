@@ -28,13 +28,11 @@ class ShreddedZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
     
     //conform SamuraiConfigProtocol
     lazy var lineLayers: [CAShapeLayer] = {
-        let paths = self.shreddedLinePaths()
-        return paths.map { self.zanLineLayer(from: $0, width: self.lineWidth, color: self.lineColor) }
+        return self.shreddedLineLayers()
     }()
     
     lazy var zanViewConfigList: [ZanViewConfigProtocol] = {
-        let infos = self.inOutSideFrames()
-        return infos.map { ZanViewConfig(inSideFrame: $0.inSideFrame, outSideFrame: $0.outSideFrame) }
+        return self.zanViewConfigs()
     }()
     
     init(containerFrame: CGRect, zanPoint: CGPoint, lineWidth: CGFloat, lineColor: UIColor, isHorizontal: Bool, shreddedCount: Int) {
@@ -50,9 +48,9 @@ class ShreddedZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
 
 extension ShreddedZanConfig {
     
-    fileprivate func shreddedLinePaths() -> [UIBezierPath] {
+    fileprivate func shreddedLineLayers() -> [CAShapeLayer] {
         
-        return (1...shreddedCount).map { count -> UIBezierPath in
+        return (1...shreddedCount).map { count -> CAShapeLayer in
             
             let position = oneSide * CGFloat(count)
             let path = UIBezierPath()
@@ -80,14 +78,16 @@ extension ShreddedZanConfig {
                 
             }
             
-            return path
+            let shreddedLayer = zanLineLayer(from: path, width: lineWidth, color: lineColor)
+            
+            return shreddedLayer
         }
         
     }
     
-    fileprivate func inOutSideFrames() -> [(inSideFrame: CGRect, outSideFrame: CGRect)] {
+    fileprivate func zanViewConfigs() -> [ZanViewConfigProtocol] {
         
-        return (0..<shreddedCount).map { count -> (inSideFrame: CGRect, outSideFrame: CGRect) in
+        return (0..<shreddedCount).map { count -> ZanViewConfigProtocol in
             
             let point = oneSide * CGFloat(count)
             let inSideFrame: CGRect
@@ -104,7 +104,7 @@ extension ShreddedZanConfig {
                 outSideFrame = inSideFrame.offsetBy(dx: outDistance, dy: 0.0)
             }
             
-            return (inSideFrame, outSideFrame)
+            return ZanViewConfig(inSideFrame: inSideFrame, outSideFrame: outSideFrame)
         }
         
     }
