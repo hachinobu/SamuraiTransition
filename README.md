@@ -121,5 +121,12 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 
 `pod 'SamuraiTransition'`
 
+#### [Carthage](https://github.com/Carthage/Carthage)
+
+- Insert `github "hachinobu/SamuraiTransition"
+- Run `carthage update`.
+- Link your app with `SamuraiTransition.framework` in `Carthage/Build`.
+
+
 # License
 SamuraiTransiton is available under the MIT license. See the LICENSE file for more info.
