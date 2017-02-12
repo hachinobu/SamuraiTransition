@@ -127,5 +127,13 @@ class ViewController: UIViewController {
         present(vc, animated: true)
     }
     
+    @IBAction func choppedZan(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        vc.samuraiTransition.zan = .chopped(oneSide: 10.0)
+        vc.samuraiTransition.isAffineTransform = false
+        present(vc, animated: true)
+    }
+    
+    
 
 }

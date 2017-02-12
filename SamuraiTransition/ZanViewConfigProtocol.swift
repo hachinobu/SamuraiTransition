@@ -14,6 +14,7 @@ public protocol ZanViewConfigProtocol {
     var outSideFrame: CGRect { get }
     var isAlphaAnimation: Bool { get }
     var mask: CAShapeLayer? { get }
+    var isScaleAnimation: Bool { get }
     
 }
 
