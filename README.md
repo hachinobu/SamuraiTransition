@@ -5,7 +5,7 @@ SamuraiTransiton is a ViewController transition framework in Swift.
 
 It is an animation as if Samurai cut out the screen with a sword.
 
-![samuraitransitiondemo](https://cloud.githubusercontent.com/assets/1317847/21517787/54561efc-cd25-11e6-81a4-653f2c486f0f.gif)
+![samuraitransitiondemo](https://cloud.githubusercontent.com/assets/1317847/22860338/dbc08422-f13d-11e6-91aa-2539b3178444.gif)
 
 # Usage
 ### Simple
