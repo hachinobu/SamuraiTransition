@@ -96,6 +96,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                 containerView.addSubview(view)
                 view.frame = config.viewFrame(isPresenting: presenting)
                 view.layer.mask = config.mask
+                view.transform = CGAffineTransform.identity
             }
             
             toView.alpha = 0.0
@@ -111,6 +112,9 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                     zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
                         view.frame = config.outSideFrame
                         view.alpha = config.isAlphaAnimation ? 0.0 : 1.0
+                        if config.isScaleAnimation {
+                            view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                        }
                     }
                     self.toView.alpha = 1.0
                     self.toView.transform = CGAffineTransform.identity
@@ -148,6 +152,9 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                 containerView.addSubview(view)
                 view.frame = config.viewFrame(isPresenting: presenting)
                 view.layer.mask = config.mask
+                if config.isScaleAnimation {
+                    view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                }
             }
             
             toView.isHidden = true
