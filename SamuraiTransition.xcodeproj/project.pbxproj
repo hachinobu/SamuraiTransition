@@ -10,7 +10,6 @@
 		AD5B398C1E0438F2004C56A2 /* CircleZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B398B1E0438F2004C56A2 /* CircleZanConfig.swift */; };
 		AD5B39901E06C341004C56A2 /* RectangleZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B398F1E06C341004C56A2 /* RectangleZanConfig.swift */; };
 		AD8D82471E4E0247006E26E4 /* ChoppedZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D82461E4E0247006E26E4 /* ChoppedZanConfig.swift */; };
-		ADDC02611DF99FEC009EEC45 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC02601DF99FEC009EEC45 /* UIView+Extension.swift */; };
 		ADDC02641DFD332A009EEC45 /* CrossZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC02631DFD332A009EEC45 /* CrossZanConfig.swift */; };
 		C2576BFF1E111EC9003572C2 /* ShreddedZanConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2576BFE1E111EC9003572C2 /* ShreddedZanConfig.swift */; };
 		C27839E71DF58ECF004B1E0C /* ZanViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */; };
@@ -33,7 +32,6 @@
 		AD5B398B1E0438F2004C56A2 /* CircleZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleZanConfig.swift; sourceTree = "<group>"; };
 		AD5B398F1E06C341004C56A2 /* RectangleZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleZanConfig.swift; sourceTree = "<group>"; };
 		AD8D82461E4E0247006E26E4 /* ChoppedZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoppedZanConfig.swift; sourceTree = "<group>"; };
-		ADDC02601DF99FEC009EEC45 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ADDC02631DFD332A009EEC45 /* CrossZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossZanConfig.swift; sourceTree = "<group>"; };
 		C2576BFE1E111EC9003572C2 /* ShreddedZanConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShreddedZanConfig.swift; sourceTree = "<group>"; };
 		C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanViewConfig.swift; sourceTree = "<group>"; };
@@ -65,6 +63,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C27158BD1F7A6BD60088144C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2F716911DF2665C00480CAB /* SamuraiViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C27158BE1F7A6BED0088144C /* Zan */ = {
+			isa = PBXGroup;
+			children = (
+				C27158BF1F7A6BFA0088144C /* Config */,
+				C2F716851DE959FF00480CAB /* Zan.swift */,
+			);
+			path = Zan;
+			sourceTree = "<group>";
+		};
+		C27158BF1F7A6BFA0088144C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C2E5F6E51DF8239F0012CFE2 /* ZanLineProtocol.swift */,
+				C2E5F6EB1DF82AC40012CFE2 /* HorizontalZanConfig.swift */,
+				C2E5F6E71DF825310012CFE2 /* VerticalZanConfig.swift */,
+				C2E5F6E91DF828830012CFE2 /* DiagonallyZanConfig.swift */,
+				ADDC02631DFD332A009EEC45 /* CrossZanConfig.swift */,
+				C2892D881DFEAE5C007FE39E /* XZanConfig.swift */,
+				C29236711E03D4AD00A04FEE /* JaggedZanConfig.swift */,
+				AD5B398B1E0438F2004C56A2 /* CircleZanConfig.swift */,
+				AD5B398F1E06C341004C56A2 /* RectangleZanConfig.swift */,
+				C29236741E07F80D00A04FEE /* TriangleZanConfig.swift */,
+				C2576BFE1E111EC9003572C2 /* ShreddedZanConfig.swift */,
+				AD8D82461E4E0247006E26E4 /* ChoppedZanConfig.swift */,
+				C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */,
+				C2E5F6DD1DF806A30012CFE2 /* ZanViewConfigProtocol.swift */,
+				C2E5F6DF1DF80D730012CFE2 /* SamuraiConfigProtocol.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		C2F716471DE9565000480CAB = {
 			isa = PBXGroup;
 			children = (
@@ -84,27 +121,11 @@
 		C2F716531DE9565000480CAB /* SamuraiTransition */ = {
 			isa = PBXGroup;
 			children = (
+				C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */,
+				C27158BE1F7A6BED0088144C /* Zan */,
+				C27158BD1F7A6BD60088144C /* ViewController */,
 				C2F716541DE9565000480CAB /* SamuraiTransition.h */,
 				C2F716551DE9565000480CAB /* Info.plist */,
-				C2F716871DE95ABC00480CAB /* SamuraiTransition.swift */,
-				C2E5F6E51DF8239F0012CFE2 /* ZanLineProtocol.swift */,
-				C2F716851DE959FF00480CAB /* Zan.swift */,
-				C2E5F6EB1DF82AC40012CFE2 /* HorizontalZanConfig.swift */,
-				C2E5F6E71DF825310012CFE2 /* VerticalZanConfig.swift */,
-				C2E5F6E91DF828830012CFE2 /* DiagonallyZanConfig.swift */,
-				ADDC02631DFD332A009EEC45 /* CrossZanConfig.swift */,
-				C2892D881DFEAE5C007FE39E /* XZanConfig.swift */,
-				C29236711E03D4AD00A04FEE /* JaggedZanConfig.swift */,
-				AD5B398B1E0438F2004C56A2 /* CircleZanConfig.swift */,
-				AD5B398F1E06C341004C56A2 /* RectangleZanConfig.swift */,
-				C29236741E07F80D00A04FEE /* TriangleZanConfig.swift */,
-				C2576BFE1E111EC9003572C2 /* ShreddedZanConfig.swift */,
-				AD8D82461E4E0247006E26E4 /* ChoppedZanConfig.swift */,
-				C27839E61DF58ECF004B1E0C /* ZanViewConfig.swift */,
-				C2E5F6DD1DF806A30012CFE2 /* ZanViewConfigProtocol.swift */,
-				C2E5F6DF1DF80D730012CFE2 /* SamuraiConfigProtocol.swift */,
-				C2F716911DF2665C00480CAB /* SamuraiViewController.swift */,
-				ADDC02601DF99FEC009EEC45 /* UIView+Extension.swift */,
 			);
 			path = SamuraiTransition;
 			sourceTree = "<group>";
@@ -189,7 +210,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADDC02611DF99FEC009EEC45 /* UIView+Extension.swift in Sources */,
 				C2F716861DE959FF00480CAB /* Zan.swift in Sources */,
 				C2E5F6DE1DF806A30012CFE2 /* ZanViewConfigProtocol.swift in Sources */,
 				AD5B398C1E0438F2004C56A2 /* CircleZanConfig.swift in Sources */,
