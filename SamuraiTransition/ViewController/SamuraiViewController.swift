@@ -52,7 +52,7 @@ open class SamuraiViewController: UIViewController {
         dismissView.addGestureRecognizer(tapRecognizer)
     }
     
-    open func tapDismissView() {
+    @objc open func tapDismissView() {
         dismiss(animated: true, completion: nil)
     }
 

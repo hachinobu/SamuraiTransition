@@ -45,12 +45,12 @@ class ViewController: UIViewController {
         zanPoint = view.center
     }
     
-    func changeSliderXValue(sender: UISlider) {
+    @objc func changeSliderXValue(sender: UISlider) {
         zanLabelX.text = sender.value.description
         zanPoint.x = CGFloat(sender.value)
     }
     
-    func changeSliderYValue(sender: UISlider) {
+    @objc func changeSliderYValue(sender: UISlider) {
         zanLabelY.text = sender.value.description
         zanPoint.y = CGFloat(sender.value)
     }
@@ -123,13 +123,13 @@ class ViewController: UIViewController {
     @IBAction func shreddedZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
         navigationController?.delegate = vc.samuraiTransition
-        vc.samuraiTransition.zan = .shredded(isHorizontal: true, shreddedCount: 30)
+        vc.samuraiTransition.zan = .shredded(isHorizontal: true, shreddedCount: 50)
         present(vc, animated: true)
     }
     
     @IBAction func choppedZan(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
-        vc.samuraiTransition.zan = .chopped(oneSide: 70.0)
+        vc.samuraiTransition.zan = .chopped(oneSide: 20.0)
         vc.samuraiTransition.isAffineTransform = false
         present(vc, animated: true)
     }
