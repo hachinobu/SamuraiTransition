@@ -45,12 +45,12 @@ class ViewController: UIViewController {
         zanPoint = view.center
     }
     
-    func changeSliderXValue(sender: UISlider) {
+    @objc func changeSliderXValue(sender: UISlider) {
         zanLabelX.text = sender.value.description
         zanPoint.x = CGFloat(sender.value)
     }
     
-    func changeSliderYValue(sender: UISlider) {
+    @objc func changeSliderYValue(sender: UISlider) {
         zanLabelY.text = sender.value.description
         zanPoint.y = CGFloat(sender.value)
     }
