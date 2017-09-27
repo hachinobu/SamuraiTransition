@@ -114,8 +114,8 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 
 # Requirements
 * Xcode 8 or higher
-* iOS 8.0 or higher
-* Swift 3.0
+* iOS 9.0 or higher
+* Swift 4.0
 
 # Installation
 #### [CocoaPods](https://github.com/cocoapods/cocoapods)
