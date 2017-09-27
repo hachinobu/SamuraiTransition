@@ -128,13 +128,5 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 - Run `carthage update`.
 - Link your app with `SamuraiTransition.framework` in `Carthage/Build`.
 
-# :warning:Attention
-Be careful when running the sample code of this project with the simulator.
-
-There is a bug that the `resizableSnapshotView` method does not work on 'iPhone 7' or 'iPhone 7 plus'.
-Therefore, in the case of a simulator, we will get View Snapshot in a different way.
-
-But in that way performance is much worse than using the `resizableSnapshotView` method.
-
 # License
 SamuraiTransiton is available under the MIT license. See the LICENSE file for more info.
