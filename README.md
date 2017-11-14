@@ -113,7 +113,7 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 ```
 
 # Requirements
-* Xcode 8 or higher
+* Xcode 9 or higher
 * iOS 9.0 or higher
 * Swift 4.0
 
