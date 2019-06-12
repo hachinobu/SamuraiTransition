@@ -44,7 +44,7 @@ open class SamuraiViewController: UIViewController {
         dismissView.translatesAutoresizingMaskIntoConstraints = false
         dismissView.backgroundColor = .clear
         view.insertSubview(dismissView, at: 0)
-        view.addConstraints([NSLayoutAttribute.top, .left, .right, .bottom].map {
+        view.addConstraints([NSLayoutConstraint.Attribute.top, .left, .right, .bottom].map {
             NSLayoutConstraint(item: dismissView, attribute: $0, relatedBy: .equal, toItem: view, attribute: $0, multiplier: 1.0, constant: 0.0)
         })
         

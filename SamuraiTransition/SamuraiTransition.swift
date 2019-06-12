@@ -17,7 +17,7 @@ public class SamuraiTransition: NSObject {
     public var zanPoint: CGPoint?
     public var zanLineColor = UIColor.black
     public var zanLineWidth: CGFloat = 1.0
-    public var operation: UINavigationControllerOperation! {
+    public var operation: UINavigationController.Operation! {
         didSet {
             popOperation = operation == .pop
         }
@@ -135,7 +135,7 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
             
         } else {
             
-            containerView.bringSubview(toFront: fromView)
+            containerView.bringSubviewToFront(fromView)
             containerView.addSubview(toView)
             
             let zanViews: [UIView] = samuraiConfig.zanViewConfigList.map {
@@ -182,10 +182,10 @@ extension SamuraiTransition {
         
         let lineAnimation = CABasicAnimation(keyPath: "strokeEnd")
         lineAnimation.duration = zanLineDuration
-        lineAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        lineAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
         lineAnimation.fromValue = 0.0
         lineAnimation.toValue = 1.0
-        lineAnimation.fillMode = kCAFillModeForwards
+        lineAnimation.fillMode = CAMediaTimingFillMode.forwards
         lineAnimation.isRemovedOnCompletion = false
         
         return lineAnimation
@@ -209,7 +209,7 @@ extension SamuraiTransition: UIViewControllerTransitioningDelegate {
 
 extension SamuraiTransition: UINavigationControllerDelegate {
     
-    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.presenting = operation == .push
         self.operation = operation
         return self

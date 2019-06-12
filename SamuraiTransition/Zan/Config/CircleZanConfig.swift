@@ -35,7 +35,7 @@ class CircleZanConfig: ZanLineProtocol, SamuraiConfigProtocol {
         self.zanPoint = zanPoint
         self.lineWidth = lineWidth
         self.lineColor = lineColor
-        self.radius = fabs(radius)
+        self.radius = abs(radius)
     }
     
 }
