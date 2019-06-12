@@ -5,7 +5,21 @@ SamuraiTransiton is a ViewController transition framework in Swift.
 
 It is an animation as if Samurai cut out the screen with a sword.
 
-![samuraitransitiondemo](https://cloud.githubusercontent.com/assets/1317847/22860410/512cbee0-f140-11e6-9485-97c6907afa05.gif)
+# transition types
+
+|horizontal|vertical|diaonally|cross|
+|:--:|:--:|:--:|:--:|
+|![horizontalzan](https://user-images.githubusercontent.com/1317847/59350691-ad428600-8d57-11e9-80c5-3099d0d50cad.gif)|![vertical](https://user-images.githubusercontent.com/1317847/59350728-ccd9ae80-8d57-11e9-9290-ab0a7ec39a09.gif)|![diagonally](https://user-images.githubusercontent.com/1317847/59350753-dc58f780-8d57-11e9-932f-8a364288ba9b.gif)|![cross](https://user-images.githubusercontent.com/1317847/59350768-e2e76f00-8d57-11e9-95c1-561a4b1c0d3c.gif)|
+
+|x|jagged|circle|rectangle|
+|:--:|:--:|:--:|:--:|
+|![x](https://user-images.githubusercontent.com/1317847/59350778-e8dd5000-8d57-11e9-892d-8b3fd7908436.gif)|![jagged](https://user-images.githubusercontent.com/1317847/59350777-e8dd5000-8d57-11e9-87f5-76f80acc134b.gif)|![circle](https://user-images.githubusercontent.com/1317847/59350779-e8dd5000-8d57-11e9-8e02-c73906579d2d.gif)|![rectangle](https://user-images.githubusercontent.com/1317847/59350780-e8dd5000-8d57-11e9-9433-c971529bac8e.gif)|
+
+|triangle|shredded|chopped|
+|:--:|:--:|:--:|
+|![triangle](https://user-images.githubusercontent.com/1317847/59350781-e975e680-8d57-11e9-8e0e-0d44641d878c.gif)|![shredded](https://user-images.githubusercontent.com/1317847/59350792-eda20400-8d57-11e9-9fa1-630793735446.gif)|![chopped](https://user-images.githubusercontent.com/1317847/59350795-eda20400-8d57-11e9-9a2a-a69113f8324f.gif)|
+
+
 
 
 # Usage
@@ -113,9 +127,9 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 ```
 
 # Requirements
-* Xcode 9 or higher
+* Xcode 10 or higher
 * iOS 9.0 or higher
-* Swift 4.0
+* Swift 5.0
 
 # Installation
 #### [CocoaPods](https://github.com/cocoapods/cocoapods)
